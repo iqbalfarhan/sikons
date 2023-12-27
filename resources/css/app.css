@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .table-wrapper {
+        @apply bg-base-100 rounded-lg border overflow-x-auto whitespace-nowrap;
+    }
+    .table thead {
+        @apply border-b-4 border-base-300;
+    }
+    .icon-4 {
+        @apply w-4 h-4;
+    }
+    .icon-5 {
+        @apply w-5 h-5;
+    }
+    .page-wrapper {
+        @apply container space-y-6 p-6 w-full max-w-6xl mx-auto;
+    }
+}
