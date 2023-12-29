@@ -14,6 +14,23 @@ class Lokasi extends Model
         'name'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+    public function scopeWitel($query, $witel){
+        return $query->whereHas('datel', function($q) use ($witel){
+            return $q->where('witel', $witel);
+        });
+    }
+
+    public function scopeDatelname($query, $datel){
+        return $query->whereHas('datel', function($q) use ($datel){
+            return $q->where('name', $datel);
+        });
+    }
+
     public function datel(){
         return $this->belongsTo(Datel::class);
     }

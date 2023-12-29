@@ -15,13 +15,17 @@ class Datel extends Model
     ];
 
     public static $witels = [
-        'REGIONAL',
         'BALIKPAPAN',
         'SAMARINDA',
         'KALTENG',
         'KALTARA',
         'KALBAR',
         'KALSEL',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 
     public function users(){

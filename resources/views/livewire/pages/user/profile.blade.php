@@ -21,14 +21,14 @@
             <li>
                 <label class="justify-between">
                     <span>Stacked sidebar</span>
-                    <input type="checkbox" class="toggle" wire:model.live="sidebar">
+                    <input type="checkbox" class="toggle">
                 </label>
             </li>
             <li></li>
             <li>
                 <label class="justify-between">
                     <span>Enable dark mode</span>
-                    <input type="checkbox" class="toggle" wire:model.live="theme">
+                    <input type="checkbox" class="toggle">
                 </label>
             </li>
         </ul>
@@ -71,7 +71,7 @@
     </div>
 
     <div>
-        <input type="checkbox" id="editProfileModal" class="modal-toggle" wire:model.live="show">
+        <input type="checkbox" id="editProfileModal" class="modal-toggle">
         <div class="modal">
             <form class="modal-box max-w-sm" wire:submit.prevent="simpan">
                 <div class="flex justify-between">
@@ -83,13 +83,13 @@
                         <label class="label">
                             <span class="label-text">Nama lengkap</span>
                         </label>
-                        <input type="text" placeholder="Type here" class="input input-bordered " wire:model="name">
+                        <input type="text" placeholder="Type here" class="input input-bordered">
                     </div>
                     <div class="form-control">
                         <label class="label">
                             <span class="label-text">Alamat email</span>
                         </label>
-                        <input type="email" placeholder="Type here" class="input input-bordered " wire:model="email">
+                        <input type="email" placeholder="Type here" class="input input-bordered">
                     </div>
                 </div>
                 <div class="modal-action justify-between">

@@ -160,6 +160,8 @@ return [
          * Package Service Providers...
          */
 
+        App\Providers\SikonsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -182,6 +184,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Sikons' => App\Helpers\Sikons::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

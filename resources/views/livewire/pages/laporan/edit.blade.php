@@ -222,8 +222,7 @@
                     <span class="label-text-alt text-error">{{ $message }}</span>
                 @enderror
             </label>
-            <input id="ev_lingkungan" type="file" class="hidden" wire:model.live="ev_lingkungan"
-                accept="image/*">
+            <input id="ev_lingkungan" type="file" class="hidden" wire:model.live="ev_lingkungan">
             <label for="ev_lingkungan" class="card w-full aspect-video shadow bg-base-200 overflow-hidden">
                 @if ($ev_lingkungan)
                     <figure class="">
@@ -243,7 +242,7 @@
                     <span class="label-text-alt text-error">{{ $message }}</span>
                 @enderror
             </label>
-            <input id="ev_gedung" type="file" class="hidden" wire:model.live="ev_gedung" accept="image/*">
+            <input id="ev_gedung" type="file" class="hidden" wire:model.live="ev_gedung">
             <label for="ev_gedung" class="card w-full aspect-video shadow bg-base-200 overflow-hidden">
                 @if ($ev_gedung)
                     <figure class="">

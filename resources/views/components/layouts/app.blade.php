@@ -4,8 +4,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{-- <meta name="viewport" content="viewport-fit=cover"> --}}
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>{{ $title ?? config('app.name') }}</title>
         @vite('resources/css/app.css')
     </head>
 
@@ -19,6 +20,7 @@
                         {{ $slot }}
                         @livewire('partial.footer')
                     </div>
+                    @livewire('partial.bottombar')
                 </div>
                 <div class="drawer-side">
                     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
