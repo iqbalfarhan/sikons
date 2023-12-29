@@ -10,7 +10,7 @@ class Mine extends Component
     public function render()
     {
         return view('livewire.pages.laporan.index', [
-            'datas' => Laporan::today()->limit(24)->get()
+            'datas' => Laporan::today()->mine()->get()
         ]);
     }
 }

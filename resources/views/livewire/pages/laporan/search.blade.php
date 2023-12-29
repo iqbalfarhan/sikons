@@ -3,7 +3,7 @@
         'title' => 'Pencarian laporan',
     ])
 
-    <div class="card bordered">
+    <div class="card border">
         <div class="card-body space-y-4">
             <div class="grid lg:grid-cols-4 gap-3">
                 <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
@@ -43,11 +43,14 @@
             </div>
         </div>
     </div>
-    <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan</div>
+
+    <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
 
     <div class="grid lg:grid-cols-3 gap-6">
-        @foreach ($datas as $data)
+        @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
-        @endforeach
+        @empty
+            @livewire('partial.nocontent')
+        @endforelse
     </div>
 </div>

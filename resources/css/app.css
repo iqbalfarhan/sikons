@@ -27,6 +27,9 @@
     .icon-10 {
         @apply w-10 h-10;
     }
+    .icon-center {
+        @apply grid place-content-center;
+    }
     .page-wrapper {
         @apply container space-y-6 p-6 w-full max-w-6xl mx-auto;
     }

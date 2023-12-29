@@ -19,15 +19,16 @@ class Home extends Component
     public function render()
     {
         if ($this->area) {
-            $datas = Laporan::select('lokasi_id', 'waktu', 'lingkungan', 'cuaca', 'pln')->with('lokasi.datel')->get()->groupBy('lokasi.datel.name');
+            $datas = Laporan::select(['lokasi_id', 'waktu', 'lingkungan', 'cuaca', 'pln'])->today()->with('lokasi.datel')->get()->groupBy('lokasi.datel.name');
         }
         else{
-            $datas = Laporan::select('lokasi_id', 'waktu', 'lingkungan', 'cuaca', 'pln')->with('lokasi.datel')->get()->groupBy('lokasi.datel.witel');
+            $datas = Laporan::select(['lokasi_id', 'waktu', 'lingkungan', 'cuaca', 'pln'])->today()->with('lokasi.datel')->get()->groupBy('lokasi.datel.witel');
         }
 
         return view('livewire.pages.dashboard.home', [
             'witels' => $this->area ? Datel::where('witel', $this->area)->pluck('name') : Datel::$witels,
-            'datas' => $datas
+            'datas' => $datas,
+            'location_count' => $this->area ? Lokasi::whereHas('datel', fn($q) => $q->where('witel', $this->area))->count() : Lokasi::count()
         ]);
     }
 }
