@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-end">
         <button class="btn btn-ghost btn-circle">
-            <x-tabler-bell class="icon-5" />
+            <x-tabler-moon class="icon-5" />
         </button>
     </div>
 </div>

@@ -17,12 +17,9 @@ class UserForm extends Form
     public $username = "";
 
     #[Validate('required')]
-    public $password = "";
+    public $password = "sikons2024";
 
-    #[Validate('required')]
     public $telp = "";
-
-    #[Validate('required')]
     public $photo = "";
 
     #[Validate('required')]
@@ -34,9 +31,9 @@ class UserForm extends Form
 
         $this->name = $user->name;
         $this->username = $user->username;
-        $this->password = $user->password;
         $this->telp = $user->telp;
         $this->photo = $user->photo;
+        $this->password = "";
         $this->datel_id = $user->datel_id;
     }
 

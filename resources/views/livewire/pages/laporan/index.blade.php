@@ -9,8 +9,12 @@
     <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan</div>
 
     <div class="grid lg:grid-cols-3 gap-6">
-        @foreach ($datas as $data)
+        @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
-        @endforeach
+        @empty
+            <div class="col-span-full">
+                @livewire('partial.nocontent')
+            </div>
+        @endforelse
     </div>
 </div>

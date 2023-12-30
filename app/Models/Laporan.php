@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Laporan extends Model
 {
@@ -94,5 +95,9 @@ class Laporan extends Model
     public function scopePln($query, $status)
     {
         return $query->where('pln', $status);
+    }
+
+    public function getThumbnailAttribute(){
+        return $this->ev_lingkungan ? Storage::url($this->ev_lingkungan) : url('no-image.jpg');
     }
 }

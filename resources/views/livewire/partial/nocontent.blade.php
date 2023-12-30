@@ -1,5 +1,8 @@
-<div class="hero">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam deserunt necessitatibus maxime deleniti natus
-        exercitationem dolorem nam fuga explicabo nihil voluptas repudiandae nulla beatae suscipit, reprehenderit
-        asperiores mollitia ratione odio?</p>
+<div class="hero bg-base-300 opacity-50 hover:opacity-70 cursor-pointer rounded-lg py-8">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold">{{ $title }}</h1>
+            <p class="py-6">{{ $desc }}</p>
+        </div>
+    </div>
 </div>

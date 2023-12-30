@@ -1,4 +1,4 @@
-<div class="card w-80">
+<div class="card w-96">
     <form class="card-body space-y-4" wire:submit="login">
         <h2 class="card-title">Login ke {{ config('app.name') }}</h2>
         <div class="space-y-2 py-2">

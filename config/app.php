@@ -161,6 +161,7 @@ return [
          */
 
         App\Providers\SikonsServiceProvider::class,
+        Onecentlin\Adminer\ServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.22",
         "livewire/livewire": "^3.3",
+        "onecentlin/laravel-adminer": "^6.1",
         "ryangjchandler/blade-tabler-icons": "^2.1"
     },
     "require-dev": {

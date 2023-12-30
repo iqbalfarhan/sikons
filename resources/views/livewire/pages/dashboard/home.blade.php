@@ -16,14 +16,14 @@
     <div>
         {{-- <pre>@json($datas, JSON_PRETTY_PRINT)</pre> --}}
     </div>
-    <div class="table-wrapper">
+    <div class="table-wrapper bg-white text-black">
         <div class="card-body p-4">
             <div class="flex justify-between">
                 <div class="font-semibold text-sm">SUMMARY SIKONS {{ $area ? 'WITEL ' . $area : 'SEMUA WITEL' }}</div>
                 <div class="font-medium text-sm">{{ date('d F Y', strtotime($tanggal)) }}</div>
             </div>
         </div>
-        <table class="table text-center border-t table-xs">
+        <table class="table text-center border-t table-xs border-black">
             <thead class="text-black">
                 <tr>
                     <th rowspan="2">WITEL</th>
@@ -34,11 +34,11 @@
                     <th colspan="2">PLN</th>
                 </tr>
                 <tr>
-                    <th>PG</th>
+                    <th>Pagi</th>
                     <th>%</th>
-                    <th>SR</th>
+                    <th>Sore</th>
                     <th>%</th>
-                    <th>ML</th>
+                    <th>Malam</th>
                     <th>%</th>
                     <th>
                         <div class="icon-center tooltip" data-tip="aman">

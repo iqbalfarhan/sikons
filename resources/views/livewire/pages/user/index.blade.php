@@ -28,7 +28,8 @@
                     <td>{{ $data->telp }}</td>
                     <td class="text-center">
                         <div class="flex gap-1 justify-center">
-                            <button class="btn btn-xs btn-success btn-square">
+                            <button class="btn btn-xs btn-success btn-square"
+                                wire:click="$dispatch('editUser', {'user': {{ $data->id }}})">
                                 <x-tabler-edit class="icon-4" />
                             </button>
                             <button class="btn btn-xs btn-accent btn-square">

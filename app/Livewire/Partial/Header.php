@@ -6,11 +6,8 @@ use Livewire\Component;
 
 class Header extends Component
 {
-    public $title;
-
-    public function mount($title = "Aplikasi sikons"){
-        $this->title = $title;
-    }
+    public $title = "Selamat datang";
+    public $desc = "Selamat datang di aplikasi";
 
     public function render()
     {

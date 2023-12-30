@@ -50,7 +50,12 @@
         @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
         @empty
-            @livewire('partial.nocontent')
+            <div class="col-span-full">
+                @livewire('partial.nocontent', [
+                    'title' => 'Pencarian',
+                    'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
+                ])
+            </div>
         @endforelse
     </div>
 </div>

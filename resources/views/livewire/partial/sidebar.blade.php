@@ -41,13 +41,19 @@
             <li>
                 <a href="{{ route('laporan.index') }}" @class(['active' => Route::is('laporan.index')]) wire:navigate>
                     <x-tabler-file-text class="icon-5" />
-                    <span>Semua laporan</span>
+                    <span>Laporan hari ini</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('laporan.search') }}" @class(['active' => Route::is('laporan.search')]) wire:navigate>
                     <x-tabler-file-search class="icon-5" />
                     <span>Cari laporan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('laporan.download') }}" @class(['active' => Route::is('laporan.download')]) wire:navigate>
+                    <x-tabler-download class="icon-5" />
+                    <span>Download laporan</span>
                 </a>
             </li>
             <li>
@@ -80,7 +86,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="/adminer" target="_blank">
                     <x-tabler-database class="icon-5" />
                     <span>Adminer database</span>
                 </a>

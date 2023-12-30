@@ -11,6 +11,10 @@ class Index extends Component
 
     protected $listeners = ['reload' => '$refresh'];
 
+    public function deleteUser(User $user){
+        $user->delete();
+    }
+
     public function render()
     {
         return view('livewire.pages.user.index', [

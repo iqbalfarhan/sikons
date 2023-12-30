@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper max-w-3xl">
     <div>
         @livewire('partial.header', ['title' => 'Masuk ke aplikasi simaru'])
     </div>

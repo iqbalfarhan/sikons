@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="wireframe">
 
     <head>
         <meta charset="utf-8">
@@ -18,8 +18,8 @@
                     @livewire('partial.navbar')
                     <div class="container">
                         {{ $slot }}
-                        @livewire('partial.footer')
                     </div>
+                    @livewire('partial.footer')
                     @livewire('partial.bottombar')
                 </div>
                 <div class="drawer-side">
@@ -30,6 +30,17 @@
         @endauth
         @guest
             <div class="grid place-content-center w-full min-h-screen">
+                <div class="navbar bg-base-100 absolute">
+                    <div class="flex-1">
+                        <a class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
+                    </div>
+                    <div class="flex-none">
+                        <ul class="menu menu-horizontal px-1">
+                            <li @class(['hidden' => Route::is('login')])><a href="{{ route('login') }}">Login</a></li>
+                            <li @class(['hidden' => Route::is('register')])><a href="{{ route('register') }}">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
                 {{ $slot }}
             </div>
         @endguest
