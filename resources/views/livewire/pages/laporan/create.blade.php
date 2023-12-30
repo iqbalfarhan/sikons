@@ -1,5 +1,6 @@
-<form class="page-wrapper lg:max-w-3xl" wire:submit="simpan">
+<form class="page-wrapper lg:max-w-3xl space-y-10" wire:submit="simpan">
     @livewire('partial.header', ['title' => 'Buat laporan sikons harian'])
+
     <div class="grid lg:grid-cols-2 gap-6">
         <div class="form-control">
             <label for="" class="label">

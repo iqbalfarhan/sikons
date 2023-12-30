@@ -51,12 +51,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('laporan.download') }}" @class(['active' => Route::is('laporan.download')]) wire:navigate>
-                    <x-tabler-download class="icon-5" />
-                    <span>Download laporan</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('laporan.mine') }}" @class(['active' => Route::is('laporan.mine')]) wire:navigate>
                     <x-tabler-file-digit class="icon-5" />
                     <span>Laporan saya</span>

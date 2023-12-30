@@ -16,17 +16,18 @@
     <div>
         {{-- <pre>@json($datas, JSON_PRETTY_PRINT)</pre> --}}
     </div>
-    <div class="table-wrapper bg-white text-black">
+    <div class="table-wrapper">
         <div class="card-body p-4">
             <div class="flex justify-between">
                 <div class="font-semibold text-sm">SUMMARY SIKONS {{ $area ? 'WITEL ' . $area : 'SEMUA WITEL' }}</div>
                 <div class="font-medium text-sm">{{ date('d F Y', strtotime($tanggal)) }}</div>
             </div>
         </div>
-        <table class="table text-center border-t table-xs border-black">
-            <thead class="text-black">
+        <table class="table text-center border-t table-xs">
+            <thead>
                 <tr>
-                    <th rowspan="2">WITEL</th>
+                    <th rowspan="2">
+                        WITEL</th>
                     <th rowspan="2">STO</th>
                     <th colspan="6">LAPORAN MASUK</th>
                     <th colspan="2">KONDISI</th>
@@ -40,41 +41,13 @@
                     <th>%</th>
                     <th>Malam</th>
                     <th>%</th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="aman">
-                            <x-tabler-check class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="tidak aman">
-                            <x-tabler-x class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="cerah">
-                            <x-tabler-sun class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="mendung">
-                            <x-tabler-cloud class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="hujan">
-                            <x-tabler-cloud-rain class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="on">
-                            <x-tabler-bulb class="icon-4" />
-                        </div>
-                    </th>
-                    <th>
-                        <div class="icon-center tooltip" data-tip="off">
-                            <x-tabler-bulb-off class="icon-4" />
-                        </div>
-                    </th>
+                    <th>aman</th>
+                    <th>tidak</th>
+                    <th>cerah</th>
+                    <th>mendung</th>
+                    <th>hujan</th>
+                    <th>on</th>
+                    <th>off</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,6 +90,7 @@
                     <button class="btn btn-ghost btn-xs">TOTAL</button>
                 </th>
                 <th>{{ $location_count }}</th>
+                <th>{{ count($datas->where('waktu', 'pagi')->toArray()) }}</th>
             </tfoot>
         </table>
     </div>

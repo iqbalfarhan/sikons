@@ -11,6 +11,7 @@ class Search extends Component
 {
     public $result;
     public $tanggal;
+    public $witel;
     public $datel;
     public $lokasi_id;
     public $waktu;
