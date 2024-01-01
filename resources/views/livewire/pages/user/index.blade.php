@@ -12,20 +12,20 @@
     <div class="table-wrapper">
         <table class="table">
             <thead>
-                <th>No</th>
-                <th>Datel Witel</th>
                 <th>Name</th>
                 <th>Username</th>
+                <th>Datel Witel</th>
                 <th>No telpon</th>
+                <th>Role</th>
                 <th class="text-center">Actions</th>
             </thead>
             @foreach ($datas as $data)
                 <tr>
-                    <td>{{ $data->id }}</td>
-                    <td class="font-medium">{{ $data->datel->name }} {{ $data->datel->witel }}</td>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->username }}</td>
+                    <td class="font-medium">{{ $data->datel->name }} {{ $data->datel->witel }}</td>
                     <td>{{ $data->telp }}</td>
+                    <td>petugas</td>
                     <td class="text-center">
                         <div class="flex gap-1 justify-center">
                             <button class="btn btn-xs btn-success btn-square"

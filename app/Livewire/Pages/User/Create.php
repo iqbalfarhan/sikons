@@ -24,7 +24,7 @@ class Create extends Component
     }
 
     public function simpan(){
-        if ($this->form->user) {
+        if ($this->mode == "create") {
             $this->form->store();
         }
         else{

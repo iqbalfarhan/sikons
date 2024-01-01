@@ -33,6 +33,12 @@
                     <span>Aplikasi SIMARU</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('lembur') }}" @class(['active' => Route::is('lembur')]) wire:navigate>
+                    <x-tabler-clock class="icon-5" />
+                    <span>Ruangan lembur</span>
+                </a>
+            </li>
         </ul>
     </li>
     <li>
@@ -86,7 +92,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('role.index') }}" @class(['active' => Route::is('role.index')]) wire:navigate>
                     <x-tabler-square-asterisk class="icon-5" />
                     <span>Role & permissions</span>
                 </a>

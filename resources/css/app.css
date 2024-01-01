@@ -24,6 +24,9 @@
     .icon-5 {
         @apply w-5 h-5;
     }
+    .icon-8 {
+        @apply w-8 h-8;
+    }
     .icon-10 {
         @apply w-10 h-10;
     }

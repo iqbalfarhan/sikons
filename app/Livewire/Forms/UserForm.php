@@ -25,7 +25,6 @@ class UserForm extends Form
     #[Validate('required')]
     public $datel_id = "";
 
-
     public function setUser(User $user){
         $this->user = $user;
 

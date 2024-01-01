@@ -36,7 +36,8 @@ class LaporanForm extends Form
     public $gedung = "normal";
     #[Validate('required', message:":attribute harus di isi", as: "photo")]
     public $ev_lingkungan = "";
-    #[Validate('required', message:":attribute harus di isi")]
+
+    // #[Validate('required', message:":attribute harus di isi", as:"Eviden gedung")]
     public $ev_gedung = "";
     #[Validate('required', message:":attribute harus di isi")]
     public $catatan = "Semua parameter aman";

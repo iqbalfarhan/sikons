@@ -27,8 +27,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/home', App\Livewire\Pages\Dashboard\Home::class)->name('home');
     Route::get('/kwhmeter', App\Livewire\Pages\Dashboard\Kwhmeter::class)->name('kwhmeter');
     Route::get('/simaru', App\Livewire\Pages\Dashboard\Simaru::class)->name('simaru');
+    Route::get('/lembur', App\Livewire\Pages\Dashboard\Lembur::class)->name('lembur');
 
     Route::get('/lokasi', App\Livewire\Pages\Lokasi\Index::class)->name('lokasi.index');
+
+    Route::get('/role', App\Livewire\Pages\Role\Index::class)->name('role.index');
 
     Route::get('/user', App\Livewire\Pages\User\Index::class)->name('user.index');
     Route::get('/user/raw', App\Livewire\Pages\User\Raw::class)->name('user.raw');

@@ -162,6 +162,7 @@ return [
 
         App\Providers\SikonsServiceProvider::class,
         Onecentlin\Adminer\ServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...

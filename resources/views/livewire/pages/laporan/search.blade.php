@@ -5,16 +5,37 @@
 
     <div class="card border">
         <div class="card-body space-y-4">
+            <div class="card-title">Pencarian dengan tanggal</div>
             <div class="grid lg:grid-cols-4 gap-3">
-                <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
+                <select type="search" class="select select-bordered" wire:model.live="jenis">
+                    <option value="">Pilih Jenis pencarian tanggal</option>
+                    <option value="range">range tanggal</option>
+                    <option value="bulan">bulan</option>
+                    <option value="tanggal">spesifik tanggal</option>
+                </select>
+
+                @if ($jenis == 'tanggal')
+                    <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
+                @elseif ($jenis == 'bulan')
+                    <input type="month" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
+                @elseif ($jenis == 'range')
+                    <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="range.0">
+                    <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="range.1">
+                @endif
+            </div>
+        </div>
+        <div class="divider p-0 m-0"></div>
+        <div class="card-body space-y-4">
+            <div class="card-title">Pencarian dengan lokasi</div>
+            <div class="grid lg:grid-cols-4 gap-3">
                 <select type="search" class="select select-bordered" wire:model.live="witel">
-                    <option value="">Pilih witel</option>
+                    <option value="">Semua witel</option>
                     @foreach ($witels as $wtl => $datels)
                         <option value="{{ $wtl }}">{{ $wtl }}</option>
                     @endforeach
                 </select>
                 <select type="search" class="select select-bordered" wire:model.live="datel">
-                    <option value="">Pilih datel</option>
+                    <option value="">Semua datel</option>
                     @isset($witel)
                         @foreach ($witels[$witel] as $datel)
                             <option value="{{ $datel->name }}">{{ $datel->name }}</option>
@@ -22,11 +43,17 @@
                     @endisset
                 </select>
                 <select type="search" class="select select-bordered" wire:model.live="lokasi_id">
-                    <option value="">Pilih lokasi</option>
+                    <option value="">Semua lokasi</option>
                     @foreach ($lokasis as $lokasiid => $lokasiname)
                         <option value="{{ $lokasiid }}">{{ $lokasiname }}</option>
                     @endforeach
                 </select>
+            </div>
+        </div>
+        <div class="divider p-0 m-0"></div>
+        <div class="card-body space-y-4">
+            <div class="card-title">Pencarian dengan parameter</div>
+            <div class="grid lg:grid-cols-4 gap-3">
                 <select class="select select-bordered" wire:model.live="waktu">
                     <option value="">Semua waktu jaga</option>
                     <option value="malam">Shift malam (23:00 - 07:00)</option>
@@ -82,7 +109,9 @@
                     <option value="rusak">Rusak</option>
                 </select>
             </div>
-
+        </div>
+        <div class="divider p-0 m-0"></div>
+        <div class="card-body">
             <div class="card-actions justify-between">
                 <button class="btn btn-primary" wire:click="cari">
                     <x-tabler-search class="icon-5" />
@@ -96,24 +125,20 @@
         </div>
     </div>
 
-    <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
 
-    @if ($result)
+    @forelse ($datas as $data)
         <button class="btn btn-accent" wire:click="cari">
             <x-tabler-download class="icon-5" />
             <span>Download hasil</span>
         </button>
-    @endif
-    <div class="grid lg:grid-cols-3 gap-6">
-        @forelse ($datas as $data)
+        <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
+        <div class="grid lg:grid-cols-3 gap-6">
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
-        @empty
-            <div class="col-span-full">
-                @livewire('partial.nocontent', [
-                    'title' => 'Pencarian',
-                    'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
-                ])
-            </div>
-        @endforelse
-    </div>
+        </div>
+    @empty
+        @livewire('partial.nocontent', [
+            'title' => 'Pencarian',
+            'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
+        ])
+    @endforelse
 </div>

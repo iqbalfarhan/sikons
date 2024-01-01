@@ -3,7 +3,7 @@
     <div class="modal" role="dialog">
         <form class="modal-box w-full max-w-3xl space-y-4" wire:submit="simpan">
             @livewire('partial.header', [
-                'title' => 'Tambah user baru',
+                'title' => ucfirst($mode) . ' user baru',
             ])
             <div class="grid grid-cols-2 gap-4 py-4">
                 <div class="form-control">

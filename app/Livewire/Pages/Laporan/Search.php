@@ -10,6 +10,7 @@ use Livewire\Component;
 class Search extends Component
 {
     public $result;
+    public $jenis;
     public $tanggal;
     public $witel;
     public $datel;

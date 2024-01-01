@@ -16,11 +16,16 @@ class Create extends Component
     public LaporanForm $form;
 
     public function simpan(){
-        $evling = $this->ev_lingkungan->store(date('Y-m-d'));
-        $this->form->ev_lingkungan = $evling;
+        if ($this->ev_lingkungan) {
+            $evling = $this->ev_lingkungan->store(date('Y-m-d'));
+            $this->form->ev_lingkungan = $evling;
+        }
 
-        $evged = $this->ev_gedung->store(date('Y-m-d'));
-        $this->form->ev_gedung = $evged;
+        if ($this->ev_gedung) {
+            $evged = $this->ev_gedung->store(date('Y-m-d'));
+            $this->form->ev_gedung = $evged;
+        }
+
 
         $this->form->validate();
         $this->form->store();
