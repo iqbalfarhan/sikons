@@ -66,6 +66,21 @@
                     <input type="text" class="input input-bordered @error('form.telp') input-error @enderror"
                         placeholder="Nomor telpon" wire:model="form.telp">
                 </div>
+                <div class="form-control">
+                    <label for="" class="label">
+                        <span class="label-text">Role account</span>
+                        @error('form.role')
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+                    <select class="select select-bordered @error('form.role') select-error @enderror"
+                        wire:model="form.role">
+                        <option value="">Pilih role</option>
+                        @foreach ($roles as $rl)
+                            <option value="{{ $rl }}">{{ $rl }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             <div class="modal-action justify-between">
                 <label for="userCreate" class="btn">Close!</label>

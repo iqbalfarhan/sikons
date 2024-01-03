@@ -3,10 +3,10 @@
 
     <div class="flex flex-col lg:flex-row justify-between items-center gap-2">
         <input type="search" class="input input-bordered w-full lg:w-fit" wire:model.live="cari" placeholder="Cari user">
-        <label for="userCreate" class="btn w-full lg:w-fit">
+        <button wire:click="$dispatch('createUser')" class="btn w-full lg:w-fit">
             <x-tabler-plus class="icon-5" />
             <span>Tambah user</span>
-        </label>
+        </button>
     </div>
 
     <div class="table-wrapper">
@@ -25,14 +25,15 @@
                     <td>{{ $data->username }}</td>
                     <td class="font-medium">{{ $data->datel->name }} {{ $data->datel->witel }}</td>
                     <td>{{ $data->telp }}</td>
-                    <td>petugas</td>
+                    <td>{{ $data->getRoleNames()->first() }}</td>
                     <td class="text-center">
                         <div class="flex gap-1 justify-center">
                             <button class="btn btn-xs btn-success btn-square"
                                 wire:click="$dispatch('editUser', {'user': {{ $data->id }}})">
                                 <x-tabler-edit class="icon-4" />
                             </button>
-                            <button class="btn btn-xs btn-accent btn-square">
+                            <button class="btn btn-xs btn-accent btn-square"
+                                wire:click="$dispatch('editPassword', {'user': {{ $data->id }}})">
                                 <x-tabler-key class="icon-4" />
                             </button>
                             <button class="btn btn-xs btn-error btn-square">
@@ -46,4 +47,5 @@
     </div>
 
     @livewire('pages.user.create')
+    @livewire('pages.user.password')
 </div>
