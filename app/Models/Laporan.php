@@ -62,16 +62,31 @@ class Laporan extends Model
     }
 
     public function getDescAttribute(){
-        return implode(",", [
-            "Dilaporkan bahwa kondisi lapangan saat jaga {$this->lingkungan},",
-            "stok bbm {$this->bbm} berada di ",
+        return implode(" ", [
+            "Dilaporkan bahwa kondisi lapangan saat jaga",
+            $this->lingkungan,
+            ".",
+            "stok bbm",
+            $this->bbm,
+            "berada di ",
             $this->bbm == "aman" ? "diatas 50 persen" : "dibawah 50 persen",
-            "semua perangkat dalam keadaan {$this->perangkat},",
-            "alat pemadan api ringan dalam keadaan ".$this->apar == "aman" ? "baik" : "tidak baik".",",
-            "alat pelindung diri juga dalam kondisi ".$this->apd == "aman" ? "lengkap" : "tidak lengkap".",",
-            "Saat berjaga kondisi dalam keadaan cerah Listrik PLN dalam keadaan {$this->pln}, ",
-            "genset dalam keadaan {$this->genset} dan",
-            "kondisi gedung {$this->gedung} tidak ada kebocoran atau kerusakan.",
+            ".",
+            "semua perangkat dalam keadaan",
+            $this->perangkat,
+            ".",
+            "alat pemadan api ringan dalam keadaan",
+            $this->apar == "aman" ? "baik" : "tidak baik",
+            ".",
+            "alat pelindung diri juga dalam kondisi ",
+            $this->apd == "aman" ? "lengkap" : "tidak lengkap",
+            ".",
+            "Saat berjaga kondisi dalam keadaan cerah",
+            ".",
+            "Listrik PLN dalam keadaan $this->pln",
+            "genset dalam keadaan $this->genset dan",
+            "kondisi gedung",
+            $this->gedung == "normal" ? "normal tidak ada kebocoran atau kerusakan." : $this->gedung,
+            "."
         ]);
     }
 

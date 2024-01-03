@@ -126,19 +126,19 @@
     </div>
 
 
-    @forelse ($datas as $data)
-        <button class="btn btn-accent" wire:click="cari">
-            <x-tabler-download class="icon-5" />
-            <span>Download hasil</span>
-        </button>
-        <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
-        <div class="grid lg:grid-cols-3 gap-6">
+    <button class="btn btn-accent" wire:click="cari">
+        <x-tabler-download class="icon-5" />
+        <span>Download hasil</span>
+    </button>
+    <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
+    <div class="grid lg:grid-cols-3 gap-6">
+        @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
-        </div>
-    @empty
-        @livewire('partial.nocontent', [
-            'title' => 'Pencarian',
-            'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
-        ])
-    @endforelse
+        @empty
+            @livewire('partial.nocontent', [
+                'title' => 'Pencarian',
+                'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
+            ])
+        @endforelse
+    </div>
 </div>
