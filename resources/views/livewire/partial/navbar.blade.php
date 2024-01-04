@@ -14,22 +14,22 @@
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                    <a>
+                    <button @class(['active' => $theme == 'dark']) wire:click="setTheme('dark')">
                         <x-tabler-moon class="icon-5" />
                         <span>Dark</span>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a>
+                    <button @class(['active' => $theme == 'light']) wire:click="setTheme('light')">
                         <x-tabler-sun class="icon-5" />
                         <span>Light</span>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a>
+                    <button @class(['active' => $theme == 'system']) wire:click="setTheme('system')">
                         <x-tabler-device-desktop class="icon-5" />
                         <span>System</span>
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>
