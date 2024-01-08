@@ -10,11 +10,16 @@ use Livewire\Component;
 class Search extends Component
 {
     public $result;
+
     public $jenis;
     public $tanggal;
+    public $bulan;
+    public $range = [];
+
     public $witel;
     public $datel;
     public $lokasi_id;
+
     public $waktu;
     public $lingkungan;
     public $bbm;
@@ -29,6 +34,12 @@ class Search extends Component
     public function cari(){
         $this->result = Laporan::when($this->tanggal, function($q){
             return $q->whereDate('created_at', $this->tanggal);
+        })->when($this->bulan, function($q){
+            return $q->whereMonth('tanggal', $this->bulan);
+        })->when($this->range, function($q){
+            return $q->whereBetween('tanggal', $this->range);
+        })->when($this->datel, function($q){
+            return $q->datel($this->datel);
         })->when($this->waktu, function($q){
             return $q->where('waktu', $this->waktu);
         })->when($this->lingkungan, function($q){
@@ -49,11 +60,13 @@ class Search extends Component
             return $q->where('genset', $this->genset);
         })->when($this->gedung, function($q){
             return $q->where('gedung', $this->gedung);
-        })->when($this->datel, function($q){
-            return $q->datel($this->datel);
         })->get();
+    }
 
-        // dd(gettype($this->result));
+    public function updatedJenis() {
+        $this->reset('tanggal');
+        $this->reset('bulan');
+        $this->reset('range');
     }
 
     public function resetFilter(){

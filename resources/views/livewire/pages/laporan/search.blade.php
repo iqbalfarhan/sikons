@@ -17,7 +17,7 @@
                 @if ($jenis == 'tanggal')
                     <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
                 @elseif ($jenis == 'bulan')
-                    <input type="month" class="input input-bordered" placeholder="Search" wire:model.live="tanggal">
+                    <input type="month" class="input input-bordered" placeholder="Search" wire:model.live="bulan">
                 @elseif ($jenis == 'range')
                     <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="range.0">
                     <input type="date" class="input input-bordered" placeholder="Search" wire:model.live="range.1">
@@ -135,34 +135,36 @@
                 <thead class="text-center">
                     <tr>
                         <th rowspan="2">No</th>
-                        <th colspan="2">Lokasi</th>
+                        <th colspan="3">Lokasi</th>
                         <th colspan="2">Waktu</th>
                         <th colspan="9">Parameter</th>
                         <th rowspan="2">Petugas</th>
                     </tr>
                     <tr>
+                        <th>Witel</th>
                         <th>Datel</th>
-                        <th>gedung</th>
+                        <th>Gedung</th>
 
                         <th>Tanggal</th>
-                        <th>waktu</th>
+                        <th>Waktu</th>
 
-                        <th>lingkungan</th>
-                        <th>bbm</th>
-                        <th>perangkat</th>
-                        <th>apar</th>
-                        <th>apd</th>
-                        <th>cuaca</th>
-                        <th>pln</th>
-                        <th>genset</th>
-                        <th>gedung</th>
+                        <th>Lingkungan</th>
+                        <th>BBM</th>
+                        <th>Perangkat</th>
+                        <th>APAR</th>
+                        <th>APD</th>
+                        <th>Cuaca</th>
+                        <th>PLN</th>
+                        <th>Genset</th>
+                        <th>Gedung</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($datas as $data)
+                    @foreach ($datas->take(25) as $data)
                         <tr>
                             <td>{{ $data->id }}</td>
-                            <td>{{ $data->lokasi->datel->label }}</td>
+                            <td>{{ $data->lokasi->datel->witel }}</td>
+                            <td>{{ $data->lokasi->datel->name }}</td>
                             <td>{{ $data->lokasi->name }}</td>
 
                             <td>{{ $data->tanggal }}</td>
