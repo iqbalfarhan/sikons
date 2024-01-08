@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->username }}</td>
-                    <td class="font-medium">{{ $data->datel->name }} {{ $data->datel->witel }}</td>
+                    <td>{{ $data->datel->label }}</td>
                     <td>{{ $data->telp }}</td>
                     <td>{{ $data->getRoleNames()->first() }}</td>
                     <td class="text-center">

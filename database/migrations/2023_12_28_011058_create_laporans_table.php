@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('ev_lingkungan')->nullable();
             $table->string('ev_gedung')->nullable();
             $table->string('catatan')->nullable();
+            $table->date('tanggal')->useCurrent();
             $table->timestamps();
         });
     }

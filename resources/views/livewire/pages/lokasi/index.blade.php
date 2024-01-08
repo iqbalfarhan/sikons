@@ -5,7 +5,7 @@
         <input type="search" class="input input-bordered" wire:model.live="cari" placeholder="Cari user">
         <button class="btn btn-ghost">
             <x-tabler-plus class="icon-5" />
-            <span>Tambah user</span>
+            <span>Tambah lokasi</span>
         </button>
     </div>
 
@@ -22,10 +22,7 @@
             @foreach ($datas as $data)
                 <tr>
                     <td>{{ $data->id }}</td>
-                    <td>
-                        {{ $data->datel->name }}
-                        {{ $data->datel->witel }}
-                    </td>
+                    <td>{{ $data->datel->label }}</td>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->timezone }}</td>
                     <td>{{ $data->tokens->count() }} Token</td>

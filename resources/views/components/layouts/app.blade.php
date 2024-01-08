@@ -10,7 +10,7 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body>
+    <body class="min-h-screen">
         @auth
             <div class="drawer lg:drawer-open">
                 <input id="drawer" type="checkbox" class="drawer-toggle" />

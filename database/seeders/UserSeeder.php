@@ -15,11 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Iqbal Farhan Syuhada',
+        $user = User::updateOrCreate([
             'username' => 'iqbal',
+        ], [
+            'name' => 'Iqbal Farhan Syuhada',
             'password' => Hash::make('adminoke'),
             'datel_id' => Datel::first()->id
         ]);
+        $user->assignRole('superadmin');
     }
 }

@@ -8,7 +8,13 @@
         <a class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
     </div>
     <div class="navbar-end">
-        <div class="dropdown dropdown-bottom dropdown-end">
+        <button class="btn btn-circle btn-ghost">
+            <div class="indicator">
+                <span class="indicator-item badge badge-xs badge-error animate-pulse"></span>
+                <x-tabler-bell-ringing class="icon-5" />
+            </div>
+        </button>
+        <div class="dropdown dropdown-bottom dropdown-end hidden lg:flex">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                 <x-tabler-moon class="icon-5" />
             </div>

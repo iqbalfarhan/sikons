@@ -35,4 +35,11 @@ class Datel extends Model
     public function lokasis(){
         return $this->hasMany(Lokasi::class);
     }
+
+    public function getLabelAttribute(){
+        return implode(' ', [
+            $this->name,
+            $this->witel,
+        ]);
+    }
 }

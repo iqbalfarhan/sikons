@@ -14,4 +14,8 @@ class Token extends Model
         'ukuran',
         'daya',
     ];
+
+    public function lokasi(){
+        return $this->belongsTo(Lokasi::class);
+    }
 }

@@ -15,99 +15,137 @@
     <li>
         <h2 class="menu-title">Dashboard</h2>
         <ul>
-            <li>
-                <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
-                    <x-tabler-dashboard class="icon-5" />
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('kwhmeter') }}" @class(['active' => Route::is('kwhmeter')]) wire:navigate>
-                    <x-tabler-bolt class="icon-5" />
-                    <span>KWH Meter</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('simaru') }}" @class(['active' => Route::is('simaru')]) wire:navigate>
-                    <x-tabler-package class="icon-5" />
-                    <span>Aplikasi SIMARU</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('lembur') }}" @class(['active' => Route::is('lembur')]) wire:navigate>
-                    <x-tabler-clock class="icon-5" />
-                    <span>Ruangan lembur</span>
-                </a>
-            </li>
+            @can('home')
+                <li>
+                    <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
+                        <x-tabler-dashboard class="icon-5" />
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            @endcan
+            @can('kwhmeter')
+                <li>
+                    <a href="{{ route('kwhmeter') }}" @class(['active' => Route::is('kwhmeter')]) wire:navigate>
+                        <x-tabler-bolt class="icon-5" />
+                        <span>KWH Meter</span>
+                    </a>
+                </li>
+            @endcan
+            @can('simaru')
+                <li>
+                    <a href="{{ route('simaru') }}" @class(['active' => Route::is('simaru')]) wire:navigate>
+                        <x-tabler-package class="icon-5" />
+                        <span>Aplikasi SIMARU</span>
+                    </a>
+                </li>
+            @endcan
+            @can('lembur')
+                <li>
+                    <a href="{{ route('lembur') }}" @class(['active' => Route::is('lembur')]) wire:navigate>
+                        <x-tabler-clock class="icon-5" />
+                        <span>Ruangan lembur</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
-    <li>
-        <h2 class="menu-title">Laporan sikons</h2>
-        <ul>
-            <li>
-                <a href="{{ route('laporan.index') }}" @class(['active' => Route::is('laporan.index')]) wire:navigate>
-                    <x-tabler-file-text class="icon-5" />
-                    <span>Laporan hari ini</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('laporan.search') }}" @class(['active' => Route::is('laporan.search')]) wire:navigate>
-                    <x-tabler-file-search class="icon-5" />
-                    <span>Cari laporan</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('laporan.mine') }}" @class(['active' => Route::is('laporan.mine')]) wire:navigate>
-                    <x-tabler-file-digit class="icon-5" />
-                    <span>Laporan saya</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('laporan.create') }}" @class(['active' => Route::is('laporan.create')]) wire:navigate>
-                    <x-tabler-file-plus class="icon-5" />
-                    <span>Buat laporan</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h2 class="menu-title">Admin area</h2>
-        <ul>
-            <li>
-                <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')]) wire:navigate>
-                    <x-tabler-users class="icon-5" />
-                    <span>User management</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('lokasi.index') }}" @class(['active' => Route::is('lokasi.index')]) wire:navigate>
-                    <x-tabler-building class="icon-5" />
-                    <span>Lokasi management</span>
-                </a>
-            </li>
-            <li>
-                <a href="/adminer" target="_blank">
-                    <x-tabler-database class="icon-5" />
-                    <span>Adminer database</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('role.index') }}" @class(['active' => Route::is('role.index')]) wire:navigate>
-                    <x-tabler-square-asterisk class="icon-5" />
-                    <span>Role & permissions</span>
-                </a>
-            </li>
-        </ul>
-    </li>
+    @canany(['laporan.index', 'laporan.search', 'laporan.mine', 'laporan.create', 'laporan.listrik'])
+        <li>
+            <h2 class="menu-title">Laporan sikons</h2>
+            <ul>
+                @can('laporan.index')
+                    <li>
+                        <a href="{{ route('laporan.index') }}" @class(['active' => Route::is('laporan.index')]) wire:navigate>
+                            <x-tabler-file-text class="icon-5" />
+                            <span>Laporan hari ini</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('laporan.search')
+                    <li>
+                        <a href="{{ route('laporan.search') }}" @class(['active' => Route::is('laporan.search')]) wire:navigate>
+                            <x-tabler-file-search class="icon-5" />
+                            <span>Cari laporan</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('laporan.mine')
+                    <li>
+                        <a href="{{ route('laporan.mine') }}" @class(['active' => Route::is('laporan.mine')]) wire:navigate>
+                            <x-tabler-file-digit class="icon-5" />
+                            <span>Laporan saya</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('laporan.create')
+                    <li>
+                        <a href="{{ route('laporan.create') }}" @class(['active' => Route::is('laporan.create')]) wire:navigate>
+                            <x-tabler-file-plus class="icon-5" />
+                            <span>Buat laporan</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('laporan.listrik')
+                    <li>
+                        <a href="{{ route('laporan.listrik') }}" @class(['active' => Route::is('laporan.listrik')]) wire:navigate>
+                            <x-tabler-bolt class="icon-5" />
+                            <span>Penggunaan listrik</span>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+        </li>
+    @endcanany
+    @canany(['user.index', 'lokasi.index', 'database.adminer', 'role.index'])
+        <li>
+            <h2 class="menu-title">Admin area</h2>
+            <ul>
+                @can('user.index')
+                    <li>
+                        <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')]) wire:navigate>
+                            <x-tabler-users class="icon-5" />
+                            <span>User management</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('lokasi.index')
+                    <li>
+                        <a href="{{ route('lokasi.index') }}" @class(['active' => Route::is('lokasi.index')]) wire:navigate>
+                            <x-tabler-building class="icon-5" />
+                            <span>Lokasi management</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('database.adminer')
+                    <li>
+                        <a href="/adminer" target="_blank">
+                            <x-tabler-database class="icon-5" />
+                            <span>Adminer database</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('role.index')
+                    <li>
+                        <a href="{{ route('role.index') }}" @class(['active' => Route::is('role.index')]) wire:navigate>
+                            <x-tabler-square-asterisk class="icon-5" />
+                            <span>Role & permissions</span>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+        </li>
+    @endcanany
     <li>
         <h2 class="menu-title">Account setting</h2>
         <ul>
-            <li>
-                <a href="{{ route('profile') }}" @class(['active' => Route::is('profile')]) wire:navigate>
-                    <x-tabler-user class="icon-5" />
-                    <span>Edit profile</span>
-                </a>
-            </li>
+            @can('profile')
+                <li>
+                    <a href="{{ route('profile') }}" @class(['active' => Route::is('profile')]) wire:navigate>
+                        <x-tabler-user class="icon-5" />
+                        <span>Edit profile</span>
+                    </a>
+                </li>
+            @endcan
             <li>
                 <button wire:click="logout">
                     <x-tabler-logout class="icon-5" />
