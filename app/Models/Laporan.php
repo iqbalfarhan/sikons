@@ -12,6 +12,7 @@ class Laporan extends Model
 
     protected $fillable = [
         'lokasi_id',
+        'tanggal',
         'user_id',
         'waktu',
         'lingkungan',

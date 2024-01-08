@@ -44,14 +44,14 @@
                             <label for="photo{{ $idtoken }}">
                                 <img src="{{ $input[$idtoken]['photo']->temporaryUrl() }}" alt="">
                             </label>
-                        @elseif (isset($input[$idtoken]['oldphoto']))
+                        @elseif (isset($input[$idtoken]['oldphoto']) && $input[$idtoken]['oldphoto'] != '')
                             <label for="photo{{ $idtoken }}">
-                                <img src="{{ Storage::url($input[$idtoken]['oldphoto']) }}" alt=""
+                                <img src="{{ Storage::url($input[$idtoken]['oldphoto']) }}" alt="dfasd"
                                     class="w-full">
                             </label>
                         @else
                             <label for="photo{{ $idtoken }}">
-                                <img src="{{ url('no-image.jpg') }}" alt="" class="w-full">
+                                <img src="{{ url('no-image.jpg') }}" alt="nophoto" class="w-full">
                             </label>
                         @endif
                         <input type="file" id="photo{{ $idtoken }}"

@@ -102,7 +102,7 @@
                     <option value="on">ON</option>
                     <option value="off">OFF</option>
                 </select>
-                <select class="select select-bordered" wire:model.live="genset">
+                <select class="select select-bordered" wire:model.live="gedung">
                     <option value="">Kondisi Gedung</option>
                     <option value="normal">Normal</option>
                     <option value="bocor">Bocor</option>
@@ -117,7 +117,7 @@
                     <x-tabler-search class="icon-5" />
                     <span>Cari laporan</span>
                 </button>
-                <button type="button" class="btn btn-warning" wire:click="$reset">
+                <button type="button" class="btn btn-warning" wire:click="resetFilter">
                     <x-tabler-x class="icon-5" />
                     <span>Reset pencarian</span>
                 </button>
@@ -125,23 +125,65 @@
         </div>
     </div>
 
-    <button class="btn btn-accent" wire:click="cari">
-        <x-tabler-download class="icon-5" />
-        <span>Download hasil</span>
-    </button>
+    @if ($result)
+        <button class="btn btn-accent" wire:click="cari">
+            <x-tabler-download class="icon-5" />
+            <span>Download hasil ({{ $datas->count() }} item)</span>
+        </button>
+        <div class="table-wrapper">
+            <table class="table table-xs">
+                <thead class="text-center">
+                    <tr>
+                        <th rowspan="2">No</th>
+                        <th colspan="2">Lokasi</th>
+                        <th colspan="2">Waktu</th>
+                        <th colspan="9">Parameter</th>
+                        <th rowspan="2">Petugas</th>
+                    </tr>
+                    <tr>
+                        <th>Datel</th>
+                        <th>gedung</th>
 
-    <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
+                        <th>Tanggal</th>
+                        <th>waktu</th>
 
-    <div class="grid lg:grid-cols-3 gap-6">
-        @forelse ($datas as $data)
-            @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
-        @empty
-            <div class="col-span-full">
-                @livewire('partial.nocontent', [
-                    'title' => 'Pencarian',
-                    'desc' => 'Silakan isi tanggal, datel, lokasi jaga atau waktu jaga dan klik cari laporan',
-                ])
-            </div>
-        @endforelse
-    </div>
+                        <th>lingkungan</th>
+                        <th>bbm</th>
+                        <th>perangkat</th>
+                        <th>apar</th>
+                        <th>apd</th>
+                        <th>cuaca</th>
+                        <th>pln</th>
+                        <th>genset</th>
+                        <th>gedung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td>{{ $data->id }}</td>
+                            <td>{{ $data->lokasi->datel->label }}</td>
+                            <td>{{ $data->lokasi->name }}</td>
+
+                            <td>{{ $data->tanggal }}</td>
+                            <td>{{ $data->waktu }}</td>
+
+                            <td>{{ $data->lingkungan }}</td>
+                            <td>{{ $data->bbm }}</td>
+                            <td>{{ $data->perangkat }}</td>
+                            <td>{{ $data->apar }}</td>
+                            <td>{{ $data->apd }}</td>
+                            <td>{{ $data->cuaca }}</td>
+                            <td>{{ $data->pln }}</td>
+                            <td>{{ $data->genset }}</td>
+                            <td>{{ $data->gedung }}</td>
+
+                            <td>{{ $data->user->name }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
+
 </div>

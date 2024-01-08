@@ -19,7 +19,7 @@
         </div>
         <div class="form-control">
             <label for="" class="label">
-                <span class="label-text">Waktu jaga</span>
+                <span class="label-text">Waktu jaga : {{ $form->tanggal }}</span>
                 @error('form.waktu')
                     <span class="label-text-alt text-error">{{ $message }}</span>
                 @enderror
@@ -152,7 +152,7 @@
                     <span class="label-text">Hujan ringan</span>
                 </label>
                 <label class="label cursor-pointer justify-start gap-2">
-                    <input type="radio" name="cuaca" class="radio" value="hujan deras"
+                    <input type="radio" name="cuaca" class="radio" value="hujan berat"
                         wire:model.live="form.cuaca" />
                     <span class="label-text">Hujan deras</span>
                 </label>

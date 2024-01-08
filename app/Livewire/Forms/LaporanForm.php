@@ -36,6 +36,8 @@ class LaporanForm extends Form
     public $gedung = "normal";
     #[Validate('required', message:":attribute harus di isi", as: "photo")]
     public $ev_lingkungan = "";
+    #[Validate('required', message:":attribute harus di isi")]
+    public $tanggal = "";
 
     // #[Validate('required', message:":attribute harus di isi", as:"Eviden gedung")]
     public $ev_gedung = "";
@@ -46,6 +48,7 @@ class LaporanForm extends Form
         $this->laporan = $laporan;
 
         $this->lokasi_id = $laporan->lokasi_id;
+        $this->tanggal = $laporan->tanggal;
         $this->user_id = $laporan->user_id;
         $this->waktu = $laporan->waktu;
         $this->lingkungan = $laporan->lingkungan;

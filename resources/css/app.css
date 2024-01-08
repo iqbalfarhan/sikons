@@ -10,7 +10,7 @@
         @apply font-medium;
     }
     .table-wrapper {
-        @apply bg-base-100 rounded-lg border overflow-x-auto whitespace-nowrap;
+        @apply bg-base-100 rounded-2xl border overflow-x-auto whitespace-nowrap;
     }
     .table thead {
         @apply border-b-4 border-base-300;

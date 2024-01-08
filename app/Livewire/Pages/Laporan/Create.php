@@ -43,6 +43,7 @@ class Create extends Component
 
     public function mount(){
         $this->form->user_id = auth()->id();
+        $this->form->tanggal = date('Y-m-d');
     }
 
     public function render()
