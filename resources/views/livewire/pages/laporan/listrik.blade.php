@@ -40,35 +40,31 @@
             @foreach ($datas as $idtoken => $nopln)
                 <div class="card border bg-base-200 shadow-lg">
                     <figure>
-                        @if ($input[$idtoken]['photo'])
+                        @if (isset($input[$idtoken]['photo']))
                             <label for="photo{{ $idtoken }}">
                                 <img src="{{ $input[$idtoken]['photo']->temporaryUrl() }}" alt="">
                             </label>
-                        @elseif ($input[$idtoken]['oldphoto'])
+                        @elseif (isset($input[$idtoken]['oldphoto']))
                             <label for="photo{{ $idtoken }}">
                                 <img src="{{ Storage::url($input[$idtoken]['oldphoto']) }}" alt=""
                                     class="w-full">
                             </label>
                         @else
-                            <label for="photo{{ $idtoken }}"
-                                class="avatar placeholder bg-base-300 w-full aspect-video">
-                                <div class="w-full aspect-video">
-                                    <x-tabler-camera class="icon-10 opacity-50" />
-                                </div>
+                            <label for="photo{{ $idtoken }}">
+                                <img src="{{ url('no-image.jpg') }}" alt="" class="w-full">
                             </label>
                         @endif
                         <input type="file" id="photo{{ $idtoken }}"
-                            wire:model.live="input.{{ $idtoken }}.photo" class="hidden">
+                            wire:model.live="input.{{ $idtoken }}.photo" class="hidden" accept="image/*">
                     </figure>
                     <div class="card-body p-6">
                         <div class="form-control">
                             <label for="">
                                 <span class="label-text">No PLN : {{ $nopln }}</span>
                             </label>
-                            <input type="text" @class([
-                                'input input-bordered w-full',
-                                'input-error' => !isset($input[$idtoken]['pemakaian']),
-                            ]) placeholder="Penggunaan daya terakhir"
+                            <input type="number"
+                                class="input input-bordered w-full @error("input.{{ $idtoken }}.pemakaian") input-error @enderror"
+                                placeholder="Penggunaan daya terakhir"
                                 wire:model.live='input.{{ $idtoken }}.pemakaian'>
                         </div>
                     </div>

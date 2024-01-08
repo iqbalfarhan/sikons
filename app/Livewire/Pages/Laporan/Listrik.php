@@ -20,16 +20,25 @@ class Listrik extends Component
 
     public function simpan()
     {
-        foreach ($this->input as $token_id => $data) {
-            $filename = null;
+        $this->validate([
+            'lokasi_id' =>'required',
+            'tanggal' =>'required',
+            'input.*.pemakaian' =>'required',
+        ]);
 
-            if ($data['photo']) {
+        foreach ($this->input as $token_id => $data) {
+
+
+            if (isset($data['photo'])) {
                 $filename = $data['photo']->hashName('listrik');
                 $photo = $data['photo'];
                 $photo->storeAs('', $filename);
             }
-            else{
+            elseif(isset($data['oldphoto'])){
                 $filename = $data['oldphoto'];
+            }
+            else{
+                $filename = null;
             }
 
             Kwhmeter::updateOrCreate([
@@ -44,17 +53,27 @@ class Listrik extends Component
         $this->alert('success', 'Berhasil disimpan');
     }
 
-    public function updatedLokasiId($lokasi_id){
+    public function updatedLokasiId(){
+        $this->redata();
+    }
+
+    public function udpatedTanggal(){
+        $this->redata();
+    }
+
+    public function redata(){
         $this->reset('input');
 
-        $tokens = Token::whereHas('lokasi', fn($q) => $q->where('id', $lokasi_id))->pluck('id');
+        $tokens = Token::whereHas('lokasi', fn($q) => $q->where('id', $this->lokasi_id))->pluck('id');
         foreach ($tokens as $id) {
             $kwhmeter = Kwhmeter::where('token_id', $id)->where('tanggal', $this->tanggal)->first();
-            $this->input[$id] = [
-                'photo' => null,
-                'pemakaian' => $kwhmeter->pemakaian ?? "",
-                'oldphoto' => $kwhmeter->photo ?? ""
-            ];
+            if ($kwhmeter) {
+                $this->input[$id] = [
+                    'photo' => null,
+                    'pemakaian' => $kwhmeter->pemakaian ?? "",
+                    'oldphoto' => $kwhmeter->photo ?? ""
+                ];
+            }
         }
     }
 
