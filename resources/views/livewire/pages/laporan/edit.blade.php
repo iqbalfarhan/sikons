@@ -229,9 +229,9 @@
                         <img src="{{ $ev_lingkungan->temporaryUrl() }}" alt="">
                     </figure>
                 @else
-                    <div class="card-body grid place-content-center">
-                        <x-tabler-camera class="icon-10 opacity-50" />
-                    </div>
+                    <figure class="">
+                        <img src="{{ $laporan->thumbnail }}" alt="">
+                    </figure>
                 @endif
             </label>
         </div>
@@ -249,9 +249,9 @@
                         <img src="{{ $ev_gedung->temporaryUrl() }}" alt="">
                     </figure>
                 @else
-                    <div class="card-body grid place-content-center">
-                        <x-tabler-camera class="icon-10 opacity-50" />
-                    </div>
+                    <figure class="">
+                        <img src="{{ Storage::url($laporan->ev_gedung) }}" alt="">
+                    </figure>
                 @endif
             </label>
         </div>

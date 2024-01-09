@@ -267,7 +267,7 @@
 
     </div>
 
-    <button class="btn btn-primary">
+    <button class="btn btn-primary w-full lg:w-fit">
         <x-tabler-check class="icon-5" />
         <span>Simpan</span>
     </button>

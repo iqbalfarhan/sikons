@@ -38,7 +38,7 @@
 
         <div class="grid lg:grid-cols-2 gap-6">
             @foreach ($datas as $idtoken => $nopln)
-                <div class="card border bg-base-200 shadow-lg">
+                <div class="card border bg-base-200 shadow-lg border-base-300">
                     <figure>
                         @if (isset($input[$idtoken]['photo']))
                             <label for="photo{{ $idtoken }}">

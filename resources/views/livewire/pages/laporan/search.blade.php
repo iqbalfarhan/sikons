@@ -3,7 +3,7 @@
         'title' => 'Pencarian laporan',
     ])
 
-    <div class="card border">
+    <div class="card border border-base-300">
         <div class="card-body space-y-4">
             <div class="card-title">Pencarian dengan tanggal</div>
             <div class="grid lg:grid-cols-4 gap-3">
@@ -117,7 +117,7 @@
                     <x-tabler-search class="icon-5" />
                     <span>Cari laporan</span>
                 </button>
-                <button type="button" class="btn btn-warning" wire:click="resetFilter">
+                <button type="button" class="btn btn-ghost" wire:click="resetFilter">
                     <x-tabler-x class="icon-5" />
                     <span>Reset pencarian</span>
                 </button>

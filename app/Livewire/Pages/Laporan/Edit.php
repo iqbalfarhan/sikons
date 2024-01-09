@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Laporan;
 
 use App\Livewire\Forms\LaporanForm;
+use App\Models\Laporan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,15 +13,21 @@ class Edit extends Component
 
     public $ev_lingkungan;
     public $ev_gedung;
+    public ?Laporan $laporan;
 
     public LaporanForm $form;
 
     public function simpan(){
-        $evling = $this->ev_lingkungan->store(date('Y-m-d'));
-        $this->form->ev_lingkungan = $evling;
+        if ($this->ev_lingkungan) {
+            $evling = $this->ev_lingkungan->store(date('Y-m-d'));
+            $this->form->ev_lingkungan = $evling;
+        }
 
-        $evged = $this->ev_gedung->store(date('Y-m-d'));
-        $this->form->ev_gedung = $evged;
+        if ($this->ev_gedung) {
+            $evged = $this->ev_gedung->store(date('Y-m-d'));
+            $this->form->ev_gedung = $evged;
+        }
+
         $this->form->validate();
         $this->form->update();
 
@@ -38,6 +45,7 @@ class Edit extends Component
     public function mount(Laporan $laporan){
         $this->form->user_id = auth()->id();
         $this->form->setLaporan($laporan);
+        $this->laporan = $laporan;
     }
 
     public function render()

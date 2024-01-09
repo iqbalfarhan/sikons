@@ -48,12 +48,13 @@
                         <td>{{ $data->lokasi->datel->label }}</td>
                         <td>{{ $data->lokasi->name }}</td>
                         <td>{{ $data->nopln }}</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>{{ $data->yesterday ?? '-' }}</td>
+                        <td>{{ $data->today ?? '-' }}</td>
+                        <td>{{ $data->selisih ?? '' }}</td>
                         <td>
                             <div class="flex justify-center">
-                                <button class="btn btn-xs btn-accent btn-square">
+                                <button class="btn btn-xs btn-accent btn-square"
+                                    wire:click="$dispatch('showKwhmeter', {token:{{ $data->id }}})">
                                     <x-tabler-folder class="icon-4" />
                                 </button>
                             </div>
@@ -63,4 +64,6 @@
             </tbody>
         </table>
     </div>
+
+    @livewire('pages.kwhmeter.show')
 </div>

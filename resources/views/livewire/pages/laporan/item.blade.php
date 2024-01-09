@@ -1,5 +1,5 @@
-<div class="card border bg-base-200 shadow-lg w-full">
-    <figure class="border-b">
+<div class="card border bg-base-200 shadow-lg w-full border-base-300">
+    <figure class="border-b border-base-300">
         <a href="{{ route('laporan.show', $laporan) }}" class="avatar w-full aspect-video">
             <div class="w-full aspect-video">
                 <img src="{{ $laporan->thumbnail }}" class="">

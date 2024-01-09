@@ -17,7 +17,7 @@ class Kwhmeter extends Component
         return view('livewire.pages.dashboard.kwhmeter', [
             'datas' => Token::when($this->lokasi_id, fn($q) => $q->where('lokasi_id', $this->lokasi_id))
                 ->when($this->datel_id, fn($q) => $q->whereHas('lokasi', fn($w) => $w->where('datel_id', $this->datel_id)))
-                ->with('lokasi.datel')->get(),
+                ->with('lokasi.datel')->with('kwhmeters')->get(),
             'datels' => Datel::get()->groupBy('witel'),
             'lokasis' => Lokasi::where('datel_id', $this->datel_id)->pluck('name', 'id')
         ]);

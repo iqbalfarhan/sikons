@@ -10,7 +10,7 @@
         @apply font-medium;
     }
     .table-wrapper {
-        @apply bg-base-100 rounded-2xl border overflow-x-auto whitespace-nowrap;
+        @apply bg-base-100 rounded-2xl border overflow-x-auto whitespace-nowrap border-base-300;
     }
     .table thead {
         @apply border-b-4 border-base-300;
@@ -51,5 +51,9 @@
     }
     .td-red {
         @apply bg-red-100 text-black;
+    }
+
+    .menu-active {
+        @apply bg-primary text-primary-content;
     }
 }

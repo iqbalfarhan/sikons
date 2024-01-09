@@ -34,6 +34,10 @@ class Laporan extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
     public function lokasi(){
         return $this->belongsTo(Lokasi::class);
     }

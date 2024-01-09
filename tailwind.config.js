@@ -9,4 +9,22 @@ export default {
         extend: {},
     },
     plugins: [require("daisyui")],
+    daisyui: {
+        themes: [
+            {
+                light: {
+                    ...require("daisyui/src/theming/themes")["light"],
+                    primary: "#F5365C",
+                    "primary-content": "#fff",
+                },
+            },
+            {
+                dark: {
+                    ...require("daisyui/src/theming/themes")["dark"],
+                    primary: "#F5365C",
+                    "primary-content": "#fff",
+                },
+            },
+        ],
+    },
 };
