@@ -1,5 +1,7 @@
 <div class="page-wrapper">
-    @livewire('partial.header')
+    @livewire('partial.header', [
+        'title' => 'Laporan saya',
+    ])
 
     <div class="flex flex-col lg:flex-row gap-2">
         <select class="select select-bordered" wire:model.live="lokasi_id">

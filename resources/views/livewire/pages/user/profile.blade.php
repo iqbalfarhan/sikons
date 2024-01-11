@@ -15,89 +15,86 @@
         </button>
     </div>
 
-    <div class="w-full max-w-lg mx-auto space-y-4">
-        <h3 class="text-lg">Layout settings:</h3>
-        <ul class="menu bg-base-200 rounded-xl">
-            <li>
-                <label class="justify-between">
-                    <span>Stacked sidebar</span>
-                    <input type="checkbox" class="toggle">
-                </label>
-            </li>
-            <li></li>
-            <li>
-                <label class="justify-between">
-                    <span>Enable dark mode</span>
-                    <input type="checkbox" class="toggle">
-                </label>
-            </li>
-        </ul>
-    </div>
-
-    <div class="w-full max-w-lg mx-auto space-y-4">
-        <h3 class="text-lg">Account settings:</h3>
-        <ul class="menu bg-base-200 rounded-xl">
-            <li>
-                <div class="justify-between">
-                    <span>Github account</span>
-                    <button class="btn btn-xs btn-ghost hover:btn-outline normal-case"
-                        wire:click="$dispatch('editProfile', {edittype: 'github'})">
-                        https://github.com/iqbalfarhan
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="w-full max-w-lg mx-auto space-y-4">
-        <h3 class="text-lg">Danger zone:</h3>
-        <ul class="menu bg-base-200 rounded-xl">
-            <li>
-                <div class="justify-between">
-                    <span>Ganti password</span>
-                    <button class="btn btn-xs btn-outline"
-                        wire:click="$dispatch('editProfile', {edittype: 'password'})">Update</button>
-                </div>
-            </li>
-            <li></li>
-            <li>
-                <label class="justify-between" wire:click="$dispatch('reload')"
-                    wire:confirm.prompt="Are you sure?\n\nType DELETE to confirm|DELETE">
-                    <span>Hapus akun</span>
-                    <button class="btn btn-error btn-xs btn-outline">Delete</button>
-                </label>
-            </li>
-        </ul>
-    </div>
-
-    <div>
-        <input type="checkbox" id="editProfileModal" class="modal-toggle">
-        <div class="modal">
-            <form class="modal-box max-w-sm" wire:submit.prevent="simpan">
-                <div class="flex justify-between">
-                    <h3 class="font-bold text-lg">Edit Profile : info</h3>
-                    <span wire:loading=""><span class="loading loading-xs"></span></span>
-                </div>
-                <div class="py-4 space-y-4">
-                    <div class="form-control">
-                        <label class="label">
+    <div class="w-full max-w-xl mx-auto space-y-4">
+        <h3 class="text-lg">Pengaturan akun:</h3>
+        <div class="card bg-base-200">
+            <div class="card-body">
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="form control">
+                        <label for="" class="label">
                             <span class="label-text">Nama lengkap</span>
                         </label>
-                        <input type="text" placeholder="Type here" class="input input-bordered">
+                        <input type="text" class="input input-bordered w-full" wire:model="form.name">
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Alamat email</span>
+                    <div class="form control">
+                        <label for="" class="label">
+                            <span class="label-text">NIK</span>
                         </label>
-                        <input type="email" placeholder="Type here" class="input input-bordered">
+                        <input type="text" class="input input-bordered w-full" wire:model="form.nik">
+                    </div>
+                    <div class="form control">
+                        <label for="" class="label">
+                            <span class="label-text">Username login</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" wire:model="form.username">
+                    </div>
+                    <div class="form control">
+                        <label for="" class="label">
+                            <span class="label-text">Password login</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" wire:model="form.password"
+                            placeholder="Password">
                     </div>
                 </div>
-                <div class="modal-action justify-between">
-                    <label for="editProfileModal" class="btn btn-ghost">Close</label>
-                    <button class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
+    <div class="w-full max-w-xl mx-auto space-y-4">
+        <h3 class="text-lg">Pengaturan lokasi:</h3>
+        <div class="card bg-base-200">
+            <div class="card-body">
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="form control">
+                        <label for="" class="label">
+                            <span class="label-text">Datel</span>
+                        </label>
+                        <select class="select select-bordered w-full" wire:model.live="form.datel_id">
+                            <option value="">Pilih datel</option>
+                            @foreach ($datels as $witel => $datel)
+                                <optgroup label="{{ $witel }}">
+                                    @foreach ($datel as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </optgroup>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full max-w-xl mx-auto space-y-4">
+        <h3 class="text-lg">Pengaturan lainnya:</h3>
+        <div class="card bg-base-200">
+            <div class="card-body">
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="form control">
+                        <label for="" class="label">
+                            <span class="label-text">Nomor telepon</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" wire:model="form.telp">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full max-w-xl mx-auto space-y-4">
+        <button class="btn btn-primary">
+            <x-tabler-check class="icon-5" />
+            <span>Simpan</span>
+        </button>
+    </div>
 </div>

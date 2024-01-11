@@ -12,6 +12,10 @@ class Kwhmeter extends Component
     public $datel_id;
     public $lokasi_id;
 
+    public function mount(){
+        $this->datel_id = auth()->user()->datel_id ?? null;
+    }
+
     public function render()
     {
         return view('livewire.pages.dashboard.kwhmeter', [

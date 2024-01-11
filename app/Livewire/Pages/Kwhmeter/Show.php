@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public $show = true;
+    public $show = false;
     public $pemakaian = [];
 
     #[On('showKwhmeter')]
@@ -19,7 +19,7 @@ class Show extends Component
     }
 
     public function mount(){
-        $this->showKwhmeter(Token::find(4));
+        // $this->showKwhmeter(Token::find(4));
     }
 
     public function render()
