@@ -60,13 +60,15 @@ return [
             'driver' => 's3',
             'endpoint' => env('MINIO_ENDPOINT', 'http://127.0.0.1:9005'),
             'use_path_style_endpoint' => true,
-            'key' => env('AWS_KEY'),
-            'secret' => env('AWS_SECRET'),
-            'region' => env('AWS_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => env('MINIO_ACCESS_KEY_ID'),
+            'secret' => env('MINIO_SECRET_ACCESS_KEY'),
+            'region' => env('MINIO_DEFAULT_REGION'),
+            'bucket' => env('MINIO_BUCKET'),
         ],
 
     ],
+
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
 
     /*
     |--------------------------------------------------------------------------

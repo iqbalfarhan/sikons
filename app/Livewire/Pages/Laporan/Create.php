@@ -17,12 +17,20 @@ class Create extends Component
 
     public function simpan(){
         if ($this->ev_lingkungan) {
-            $evling = $this->ev_lingkungan->store(date('Y-m-d'));
+            $filename = implode(".", [
+                uniqid(),
+                $this->ev_lingkungan->getClientOriginalExtension()
+            ]);
+            $evling = $this->ev_lingkungan->storeAs(date('Y-m-d'), $filename);
             $this->form->ev_lingkungan = $evling;
         }
 
         if ($this->ev_gedung) {
-            $evged = $this->ev_gedung->store(date('Y-m-d'));
+            $filename = implode(".", [
+                uniqid(),
+                $this->ev_gedung->getClientOriginalExtension()
+            ]);
+            $evged = $this->ev_gedung->storeAs(date('Y-m-d'), $filename);
             $this->form->ev_gedung = $evged;
         }
 

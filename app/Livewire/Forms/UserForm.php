@@ -15,6 +15,7 @@ class UserForm extends Form
     public $username = "";
     public $password = "sikons2024";
     public $telp = "";
+    public $photo;
     public $datel_id = "";
     public $role = "petugas";
 
@@ -51,6 +52,7 @@ class UserForm extends Form
             'username' =>'required',
             'password' => '',
             'telp' =>'',
+            'photo' =>'',
             'datel_id' =>'required',
         ]);
 

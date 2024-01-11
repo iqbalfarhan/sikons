@@ -1,12 +1,17 @@
 <div class="page-wrapper space-y-8">
     <div class="flex flex-col justify-between items-center gap-4">
         <div>
-            <button class="avatar" wire:click="$dispatch('editProfile', {edittype: 'photo'})">
+            <label for="inputPhoto" class="avatar" wire:click="$dispatch('editProfile', {edittype: 'photo'})">
                 <div class="w-24 rounded-full">
-                    <img src="https://avatars.githubusercontent.com/u/53584619?v=4">
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}">
+                    @else
+                        <img src="{{ $user->avatar }}">
+                    @endif
                 </div>
-            </button>
+            </label>
         </div>
+        <input type="file" wire:model="photo" id="inputPhoto" class="hidden">
         <button class="btn btn-ghost normal-case btn-lg" wire:click="$dispatch('editProfile', {edittype: 'info'})">
             <div class="flex flex-col">
                 <h1 class="text-xl font-bold">{{ $user->name }}</h1>
@@ -92,7 +97,7 @@
     </div>
 
     <div class="w-full max-w-xl mx-auto space-y-4">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:click="simpan">
             <x-tabler-check class="icon-5" />
             <span>Simpan</span>
         </button>

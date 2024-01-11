@@ -1,16 +1,6 @@
 <ul class="menu p-4 w-80 min-h-full text-base-content space-y-4 bg-base-100 border-r border-base-300">
     <li>
-        <div class="flex gap-3">
-            <div class="avatar placeholder">
-                <div class="bg-base-200 text-base-content  mask w-10 mask-squircle">
-                    <x-tabler-user class="icon-5" />
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <div class="text-base font-bold capitalize">{{ auth()->user()->name }}</div>
-                <div class="text-xs opacity-75">{{ auth()->user()->datel->name }}</div>
-            </div>
-        </div>
+        @livewire('pages.user.badge', ['user' => auth()->user()])
     </li>
     <li>
         <h2 class="menu-title">Dashboard</h2>
