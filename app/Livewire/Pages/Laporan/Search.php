@@ -32,14 +32,34 @@ class Search extends Component
     public $gedung;
 
     public function cari(){
+        if ($this->jenis == "range") {
+            $this->validate([
+                'range.0' => 'required',
+                'range.1' => 'required'
+            ]);
+        } elseif ($this->jenis == "bulan") {
+            $this->validate([
+                'bulan' => 'required'
+            ]);
+        } elseif ($this->jenis == "tanggal") {
+            $this->validate([
+                'tanggal' => 'required'
+            ]);
+        }
+
         $this->result = Laporan::when($this->tanggal, function($q){
             return $q->whereDate('created_at', $this->tanggal);
         })->when($this->bulan, function($q){
-            return $q->whereMonth('tanggal', $this->bulan);
+            list($tahun, $bulan) = explode('-', $this->bulan);
+            return $q->whereMonth('tanggal', $bulan)->whereYear('tanggal', $tahun);
         })->when($this->range, function($q){
             return $q->whereBetween('tanggal', $this->range);
+        })->when($this->witel, function($q){
+            return $q->whereHas('lokasi.datel', fn($r) => $r->where('witel', $this->witel));
         })->when($this->datel, function($q){
             return $q->datel($this->datel);
+        })->when($this->lokasi_id, function($q){
+            return $q->where('lokasi_id', $this->lokasi_id);
         })->when($this->waktu, function($q){
             return $q->where('waktu', $this->waktu);
         })->when($this->lingkungan, function($q){

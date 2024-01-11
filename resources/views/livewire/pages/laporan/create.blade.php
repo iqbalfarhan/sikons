@@ -1,7 +1,7 @@
 <form class="page-wrapper lg:max-w-3xl space-y-10" wire:submit="simpan">
     @livewire('partial.header', ['title' => 'Buat laporan sikons harian'])
 
-    <div class="grid lg:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 gap-6">
         <div class="form-control">
             <label for="" class="label">
                 <span class="label-text">Lokasi jaga</span>
@@ -267,7 +267,7 @@
 
     </div>
 
-    <button class="btn btn-primary w-full lg:w-fit">
+    <button class="btn btn-primary">
         <x-tabler-check class="icon-5" />
         <span>Simpan</span>
     </button>

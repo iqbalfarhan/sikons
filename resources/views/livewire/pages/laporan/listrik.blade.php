@@ -1,4 +1,4 @@
-<div class="page-wrapper max-w-3xl">
+<div class="page-wrapper max-w-3xl space-y-10">
     <div class="">
         @livewire('partial.header', [
             'title' => 'Penggunaan listrik harian',
@@ -6,7 +6,7 @@
         ])
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-2 lg:gap-6">
+    <div class="grid md:grid-cols-2 gap-2 md:gap-6">
         <div class="form-control">
             <label for="" class="label">
                 <span class="label-text">Lokasi jaga</span>
@@ -36,7 +36,7 @@
     @if ($datas->count() > 0)
         <div class="divider text-xs opacity-75">{{ $datas->count() }} nomor pln yang harus diisi</div>
 
-        <div class="grid lg:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
             @foreach ($datas as $idtoken => $nopln)
                 <div class="card border bg-base-200 shadow-lg border-base-300">
                     <figure>

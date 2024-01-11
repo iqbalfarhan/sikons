@@ -1,9 +1,9 @@
 <div class="page-wrapper">
-    @livewire('partial.header', ['title' => 'User management'])
+    @livewire('partial.header', ['title' => 'Management data lokasi'])
 
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col lg:flex-row justify-between items-center gap-2">
         <input type="search" class="input input-bordered" wire:model.live="cari" placeholder="Cari user">
-        <button class="btn btn-ghost">
+        <button class="btn w-full lg:w-fit">
             <x-tabler-plus class="icon-5" />
             <span>Tambah lokasi</span>
         </button>

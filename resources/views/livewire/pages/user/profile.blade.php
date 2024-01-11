@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-between items-center gap-4">
         <div>
             <label for="inputPhoto" class="avatar" wire:click="$dispatch('editProfile', {edittype: 'photo'})">
-                <div class="w-24 rounded-full">
+                <div class="w-32 rounded-full">
                     @if ($photo)
                         <img src="{{ $photo->temporaryUrl() }}">
                     @else
@@ -20,11 +20,11 @@
         </button>
     </div>
 
-    <div class="w-full max-w-xl mx-auto space-y-4">
+    <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan akun:</h3>
         <div class="card bg-base-200">
             <div class="card-body">
-                <div class="grid lg:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
                         <label for="" class="label">
                             <span class="label-text">Nama lengkap</span>
@@ -55,11 +55,11 @@
         </div>
     </div>
 
-    <div class="w-full max-w-xl mx-auto space-y-4">
+    <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan lokasi:</h3>
         <div class="card bg-base-200">
             <div class="card-body">
-                <div class="grid lg:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
                         <label for="" class="label">
                             <span class="label-text">Datel</span>
@@ -80,11 +80,11 @@
         </div>
     </div>
 
-    <div class="w-full max-w-xl mx-auto space-y-4">
+    <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan lainnya:</h3>
         <div class="card bg-base-200">
             <div class="card-body">
-                <div class="grid lg:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
                         <label for="" class="label">
                             <span class="label-text">Nomor telepon</span>
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <div class="w-full max-w-xl mx-auto space-y-4">
+    <div class="w-full max-w-2xl mx-auto space-y-4">
         <button class="btn btn-primary" wire:click="simpan">
             <x-tabler-check class="icon-5" />
             <span>Simpan</span>

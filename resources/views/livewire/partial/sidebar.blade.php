@@ -54,7 +54,7 @@
                 @can('laporan.index')
                     <li>
                         <a href="{{ route('laporan.index') }}" @class([
-                            'menu-active' => Route::is('laporan.index'),
+                            'menu-active' => Route::is(['laporan.index', 'laporan.show']),
                         ]) wire:navigate>
                             <x-tabler-file-text class="icon-5" />
                             <span>Laporan hari ini</span>

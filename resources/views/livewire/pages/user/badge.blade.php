@@ -1,6 +1,6 @@
 <div class="flex gap-3">
     <div @class(['avatar', 'placeholder' => !$user->photo])>
-        <div class="bg-base-200 text-base-content  mask w-10 mask-squircle">
+        <div class="bg-base-200 text-base-content w-10 rounded-full">
             @if ($user->photo)
                 <img src="{{ $user->avatar }}" alt="">
             @else

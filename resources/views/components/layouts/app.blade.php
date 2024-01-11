@@ -12,11 +12,11 @@
 
     <body class="min-h-screen">
         @auth
-            <div class="drawer lg:drawer-open">
+            <div class="drawer {{ session('sidebar', 'expand') == 'expand' ? 'lg:drawer-open' : '' }}">
                 <input id="drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
                     @livewire('partial.navbar')
-                    <div class="container">
+                    <div class="">
                         {{ $slot }}
                     </div>
                     @livewire('partial.footer')

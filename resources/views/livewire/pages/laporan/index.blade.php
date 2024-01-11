@@ -1,5 +1,7 @@
 <div class="page-wrapper">
-    @livewire('partial.header')
+    @livewire('partial.header', [
+        'title' => 'Laporan sikons hari ini',
+    ])
 
     <div class="grid lg:grid-cols-3 gap-6">
         @forelse ($datas as $data)

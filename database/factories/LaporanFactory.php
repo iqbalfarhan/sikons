@@ -21,6 +21,7 @@ class LaporanFactory extends Factory
         return [
             'lokasi_id' => fake()->randomElement(Lokasi::pluck('id')),
             'user_id' => fake()->randomElement(User::pluck('id')),
+            'tanggal' => now(),
             'waktu' => fake()->randomElement(['pagi', 'sore', 'malam']),
             'lingkungan' => fake()->randomElement(['aman', 'tidak aman']),
             'bbm' => fake()->randomElement(['aman', 'tidak aman']),

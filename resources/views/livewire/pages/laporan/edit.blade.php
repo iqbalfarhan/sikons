@@ -249,9 +249,15 @@
                         <img src="{{ $ev_gedung->temporaryUrl() }}" alt="">
                     </figure>
                 @else
-                    <figure class="">
-                        <img src="{{ Storage::url($laporan->ev_gedung) }}" alt="">
-                    </figure>
+                    @if ($laporan->ev_gedung)
+                        <figure class="">
+                            <img src="{{ Storage::url($laporan->ev_gedung) }}" alt="">
+                        </figure>
+                    @else
+                        <figure class="">
+                            <img src="{{ url('no-image.jpg') }}" alt="">
+                        </figure>
+                    @endif
                 @endif
             </label>
         </div>

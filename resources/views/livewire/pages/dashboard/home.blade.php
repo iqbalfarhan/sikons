@@ -1,33 +1,31 @@
-<div class="page-wrapper max-w-full">
+<div class="page-wrapper  max-w-full">
     @livewire('partial.header', ['title' => 'Halaman home'])
-    <div class="flex flex-col lg:flex-row gap-2">
-        <select class="select select-bordered" wire:model.live="area">
-            <option value="">SEMUA WITEL</option>
-            @foreach (\App\Models\Datel::$witels as $optwtl)
-                <option value="{{ $optwtl }}">{{ $optwtl }}</option>
-            @endforeach
-        </select>
-        <input type="date" class="input input-bordered" placeholder="" wire:model.live="tanggal">
+    <div class="flex flex-col md:flex-row gap-2 justify-between">
+        <div class="flex flex-col md:flex-row gap-2">
+            <select class="select select-bordered" wire:model.live="area">
+                <option value="">SEMUA WITEL</option>
+                @foreach (\App\Models\Datel::$witels as $optwtl)
+                    <option value="{{ $optwtl }}">{{ $optwtl }}</option>
+                @endforeach
+            </select>
+            <input type="date" class="input input-bordered" placeholder="" wire:model.live="tanggal">
+        </div>
         <button class="btn bordered">
             <x-tabler-camera class="icon-5" />
             <span>Capture</span>
         </button>
     </div>
-    <div>
-        {{-- <pre>@json($datas, JSON_PRETTY_PRINT)</pre> --}}
-    </div>
-    <div class="table-wrapper">
+    <div class="table-wrapper w-full">
         <div class="card-body p-4">
-            <div class="flex justify-between">
+            <div class="flex flex-col md:flex-row justify-between">
                 <div class="font-semibold text-sm">SUMMARY SIKONS {{ $area ? 'WITEL ' . $area : 'SEMUA WITEL' }}</div>
                 <div class="font-medium text-sm">{{ date('d F Y', strtotime($tanggal)) }}</div>
             </div>
         </div>
-        <table class="table text-center border-t table-xs">
+        <table class="table text-center border-t table-xs w-full">
             <thead>
                 <tr>
-                    <th rowspan="2">
-                        WITEL</th>
+                    <th rowspan="2">WITEL</th>
                     <th rowspan="2">STO</th>
                     <th colspan="6">LAPORAN MASUK</th>
                     <th colspan="2">KONDISI</th>

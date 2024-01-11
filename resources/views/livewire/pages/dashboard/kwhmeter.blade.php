@@ -5,7 +5,7 @@
         ])
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex flex-col md:flex-row gap-2">
         <select class="select select-bordered" wire:model.live="datel_id">
             <option value="">Pilih datel</option>
             @foreach ($datels as $witel => $datel)

@@ -3,7 +3,7 @@
         'title' => 'Laporan saya',
     ])
 
-    <div class="flex flex-col lg:flex-row gap-2">
+    <div class="flex flex-col md:flex-row gap-2">
         <select class="select select-bordered" wire:model.live="lokasi_id">
             <option value="">Pilih lokasi</option>
             @foreach ($lokasis as $lokasiid => $lokasiname)
@@ -15,7 +15,7 @@
 
     <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
 
-    <div class="grid lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
         @empty
