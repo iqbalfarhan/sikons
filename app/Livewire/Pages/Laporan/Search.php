@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Pages\Laporan;
 
+use App\Exports\LaporanExport;
 use App\Models\Datel;
 use App\Models\Laporan;
 use App\Models\Lokasi;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Search extends Component
 {
@@ -91,6 +93,10 @@ class Search extends Component
 
     public function resetFilter(){
         $this->reset();
+    }
+
+    public function download(){
+        return Excel::download(new LaporanExport($this->result), 'laporan sikons.xlsx');
     }
 
     public function render()

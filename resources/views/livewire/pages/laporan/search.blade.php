@@ -144,7 +144,7 @@
 
     @if ($result)
         <div class="flex flex-col md:flex-row justify-between">
-            <button class="btn btn-accent" wire:click="cari">
+            <button class="btn btn-accent" wire:click="download">
                 <x-tabler-download class="icon-5" />
                 <span>Download hasil ({{ $datas->count() }} item)</span>
             </button>
