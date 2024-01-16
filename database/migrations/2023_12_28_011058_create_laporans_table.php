@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('ev_gedung')->nullable();
             $table->string('catatan')->nullable();
             $table->date('tanggal')->useCurrent();
+            $table->tinyInteger('score')->default(3);
             $table->timestamps();
         });
     }

@@ -52,11 +52,15 @@
                         <td>{{ $data->today ?? '-' }}</td>
                         <td>{{ $data->selisih ?? '' }}</td>
                         <td>
-                            <div class="flex justify-center">
+                            <div class="flex justify-center gap-2">
                                 <button class="btn btn-xs btn-accent btn-square"
                                     wire:click="$dispatch('showKwhmeter', {token:{{ $data->id }}})">
                                     <x-tabler-folder class="icon-4" />
                                 </button>
+                                <a href="{{ route('token.show', $data->id) }}"
+                                    class="btn btn-xs btn-square btn-primary">
+                                    <x-tabler-calendar class="icon-4" />
+                                </a>
                             </div>
                         </td>
                     </tr>

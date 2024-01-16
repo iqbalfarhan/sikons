@@ -27,6 +27,7 @@ class Laporan extends Model
         'ev_lingkungan',
         'ev_gedung',
         'catatan',
+        'score',
     ];
 
     protected $hidden = [

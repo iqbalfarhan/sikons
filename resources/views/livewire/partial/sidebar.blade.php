@@ -18,7 +18,7 @@
             @can('kwhmeter')
                 <li>
                     <a href="{{ route('kwhmeter') }}" @class([
-                        'menu-active' => Route::is('kwhmeter'),
+                        'menu-active' => Route::is(['kwhmeter', 'token.show']),
                     ]) wire:navigate>
                         <x-tabler-bolt class="icon-5" />
                         <span>KWH Meter</span>

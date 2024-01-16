@@ -45,4 +45,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/laporan/mine', App\Livewire\Pages\Laporan\Mine::class)->name('laporan.mine');
     Route::get('/laporan/{laporan}', App\Livewire\Pages\Laporan\Show::class)->name('laporan.show');
     Route::get('/laporan/{laporan}/edit', App\Livewire\Pages\Laporan\Edit::class)->name('laporan.edit');
+
+    Route::get('/token/{token}', App\Livewire\Pages\Token\Show::class)->name('token.show');
 });
