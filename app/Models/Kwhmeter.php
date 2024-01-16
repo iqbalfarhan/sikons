@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Sikons;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -27,6 +28,6 @@ class Kwhmeter extends Model
     }
 
     public function getImageAttribute(){
-        return $this->photo ? Storage::url($this->photo) : url('no-image.jpg');
+        return $this->photo ? Storage::url($this->photo) : Sikons::noimage();
     }
 }

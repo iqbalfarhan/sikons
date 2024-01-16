@@ -12,4 +12,9 @@ class Sikons
             return '0%';
         }
     }
+
+    public static function noimage(){
+        $theme = session('theme') ?: "dark";
+        return url("no-image-$theme.jpg");
+    }
 }

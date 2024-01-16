@@ -19,7 +19,7 @@ class Navbar extends Component
     }
 
     public function setTheme($theme){
-        session(['theme' => $theme]);
+        session(['theme' => $theme == "system" ? null : $theme]);
         $this->theme = $theme;
 
         return redirect($this->url);

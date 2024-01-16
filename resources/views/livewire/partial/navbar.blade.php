@@ -33,7 +33,7 @@
                     </button>
                 </li>
                 <li>
-                    <button @class(['menu-active' => $theme == 'system']) wire:click="setTheme('system')">
+                    <button @class(['menu-active' => $theme == null]) wire:click="setTheme('system')">
                         <x-tabler-device-desktop class="icon-5" />
                         <span>System</span>
                     </button>

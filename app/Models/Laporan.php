@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Sikons;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -133,6 +134,6 @@ class Laporan extends Model
     }
 
     public function getThumbnailAttribute(){
-        return $this->ev_lingkungan ? Storage::url($this->ev_lingkungan) : url('no-image.jpg');
+        return $this->ev_lingkungan ? Storage::url($this->ev_lingkungan) : Sikons::noimage();
     }
 }

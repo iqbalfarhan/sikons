@@ -51,7 +51,7 @@
                             </label>
                         @else
                             <label for="photo{{ $idtoken }}">
-                                <img src="{{ url('no-image.jpg') }}" alt="nophoto" class="w-full">
+                                <img src="{{ Sikons::noimage() }}" alt="nophoto" class="w-full">
                             </label>
                         @endif
                         <input type="file" id="photo{{ $idtoken }}"
