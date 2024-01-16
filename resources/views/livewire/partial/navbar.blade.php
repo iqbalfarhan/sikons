@@ -18,7 +18,7 @@
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                 <x-tabler-settings class="icon-5" />
             </div>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-4 shadow bg-base-200 rounded-box w-72">
                 <li class="menu-title text-sm">Pengaturan tema</li>
                 <li>
                     <button @class(['menu-active' => $theme == 'dark']) wire:click="setTheme('dark')">

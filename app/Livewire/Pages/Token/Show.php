@@ -36,9 +36,13 @@ class Show extends Component
     public function render()
     {
         $firstDay = Carbon::createFromDate($this->tahun, $this->bulan);
+        $datas = Kwhmeter::where('token_id', $this->token->id)
+                            ->whereYear('tanggal', $this->tahun)
+                            ->whereMonth('tanggal', $this->bulan)
+                            ->pluck('id', 'tanggal');
 
         return view('livewire.pages.token.show', [
-            'datas' => Kwhmeter::where('token_id', $this->token->id)->whereYear('tanggal', $this->tahun)->whereMonth('tanggal', $this->bulan)->select('id', 'tanggal')->pluck('id', 'tanggal'),
+            'datas' => $datas,
             'daysInMonth' => $firstDay->daysInMonth,
             'startDayOfWeek' => $firstDay->dayOfWeek,
         ]);

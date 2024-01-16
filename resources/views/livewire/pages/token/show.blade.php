@@ -26,7 +26,7 @@
                     @if ($i < $startDayOfWeek)
                         <td></td>
                     @else
-                        <td>@livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key($dayCounter))</td>
+                        <td>@livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key(uniqid()))</td>
                         @php
                             $dayCounter++;
                         @endphp
@@ -39,7 +39,7 @@
                     @for ($col = 1; $col <= 7; $col++)
                         @if ($dayCounter <= $daysInMonth)
                             <td>
-                                @livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key($dayCounter))
+                                @livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key(uniqid()))
                             </td>
                             @php
                                 $dayCounter++;
@@ -54,5 +54,8 @@
         </table>
     </div>
 
-    <pre>@json($datas, JSON_PRETTY_PRINT)</pre>
+    @livewire('pages.kwhmeter.edit', [
+        'token' => $token,
+    ])
+
 </div>
