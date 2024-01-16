@@ -57,7 +57,7 @@ class Listrik extends Component
         $this->redata();
     }
 
-    public function udpatedTanggal(){
+    public function updatedTanggal(){
         $this->redata();
     }
 
