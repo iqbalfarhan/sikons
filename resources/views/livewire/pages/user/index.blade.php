@@ -22,13 +22,13 @@
             @foreach ($datas as $data)
                 <tr>
                     <td>
-                        <div class="flex gap-2 items-center"
-                            wire:click="$dispatch('previewImage', {image:'{{ $data->avatar }}'})">
-                            <div class="avatar">
+                        <div class="flex gap-2 items-center">
+                            <button class="avatar"
+                                wire:click="$dispatch('previewImage', {image:'{{ $data->avatar }}'})">
                                 <div class="w-5 rounded-full">
                                     <img src="{{ $data->avatar }}" alt="">
                                 </div>
-                            </div>
+                            </button>
                             {{ $data->name }}
                         </div>
                     </td>
