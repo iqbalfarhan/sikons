@@ -7,55 +7,31 @@
 
     <div class="table-wrapper">
         <table class="table">
-            <thead>
-                <th width="{{ 100 / 7 }}%">Senin</th>
-                <th width="{{ 100 / 7 }}%">Selasa</th>
-                <th width="{{ 100 / 7 }}%">Rabu</th>
-                <th width="{{ 100 / 7 }}%">Kamis</th>
-                <th width="{{ 100 / 7 }}%">Jumat</th>
-                <th width="{{ 100 / 7 }}%">Sabtu</th>
-                <th width="{{ 100 / 7 }}%">Minggu</th>
-            </thead>
-
-            @php
-                $dayCounter = 1;
-            @endphp
-
-            <tr>
-                @for ($i = 1; $i <= 7; $i++)
-                    @if ($i < $startDayOfWeek)
-                        <td></td>
-                    @else
-                        <td>@livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key(uniqid()))</td>
-                        @php
-                            $dayCounter++;
-                        @endphp
-                    @endif
-                @endfor
-            </tr>
-
-            @for ($row = 2; $row <= 6; $row++)
+            <table class="table">
                 <tr>
-                    @for ($col = 1; $col <= 7; $col++)
-                        @if ($dayCounter <= $daysInMonth)
-                            <td>
-                                @livewire('pages.token.item', [$datas[implode('-', [$tanggal, $dayCounter])] ?? 0], key(uniqid()))
-                            </td>
-                            @php
-                                $dayCounter++;
-                            @endphp
-                        @else
-                            <td></td>
-                        @endif
-                    @endfor
+                    @foreach ($dayNames as $name)
+                        <th>{{ $name }}</th>
+                    @endforeach
                 </tr>
-            @endfor
-
+                @foreach (array_chunk($daysOfMonth, 7) as $week)
+                    <tr>
+                        @foreach ($week as $day)
+                            <td>
+                                @if ($day != 0)
+                                    <div class="flex flex-col gap-2">
+                                        <div class="badge badge-outline">{{ $day }}</div>
+                                        @livewire('pages.token.item', [$datas[implode('-', [$tanggal, $day])] ?? 0], key(uniqid()))
+                                    </div>
+                                @endif
+                            </td>
+                        @endforeach
+                    </tr>
+                @endforeach
+            </table>
         </table>
     </div>
 
     @livewire('pages.kwhmeter.edit', [
         'token' => $token,
     ])
-
 </div>
