@@ -21,7 +21,17 @@
             </thead>
             @foreach ($datas as $data)
                 <tr>
-                    <td>{{ $data->name }}</td>
+                    <td>
+                        <div class="flex gap-2 items-center"
+                            wire:click="$dispatch('previewImage', {image:'{{ $data->avatar }}'})">
+                            <div class="avatar">
+                                <div class="w-5 rounded-full">
+                                    <img src="{{ $data->avatar }}" alt="">
+                                </div>
+                            </div>
+                            {{ $data->name }}
+                        </div>
+                    </td>
                     <td>{{ $data->username }}</td>
                     <td>{{ $data->datel->label }}</td>
                     <td>{{ $data->telp }}</td>

@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="flex flex-col">
-        <div class="text-base font-bold capitalize">{{ $user->name }} {{ session('theme') }}</div>
-        <div class="text-xs opacity-75">{{ $user->datel->name }}</div>
+        <div class="text-base font-bold capitalize">{{ $user->name }}</div>
+        <div class="text-xs opacity-75">{{ $user->datel->label }}</div>
     </div>
 </div>

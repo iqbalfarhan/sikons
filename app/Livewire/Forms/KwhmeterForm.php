@@ -31,12 +31,11 @@ class KwhmeterForm extends Form
     }
 
     public function store(){
-        Kwhmeter::create($this->all());
-        $this->reset();
-    }
-
-    public function update(){
-        $this->kwhmeter->update($this->all());
+        $this->validate();
+        Kwhmeter::updateOrCreate([
+            'token_id' => $this->token_id,
+            'tanggal' => $this->tanggal,
+        ], $this->all());
         $this->reset();
     }
 }

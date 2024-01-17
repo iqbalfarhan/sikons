@@ -11,10 +11,11 @@ use Livewire\WithFileUploads;
 class Edit extends Component
 {
     use WithFileUploads;
-    public ?Kwhmeter $kwhmeter;
+    public ?Kwhmeter $kwhmeter = null;
     public KwhmeterForm $form;
     public ?Token $token;
     public $tanggal;
+    public $show = false;
     public $photo;
 
     public function updatedTanggal($tanggal){
@@ -22,6 +23,29 @@ class Edit extends Component
         if ($this->kwhmeter instanceof Kwhmeter) {
             $this->form->setKwhmeter($this->kwhmeter);
         }
+    }
+
+    public function simpan(){
+        $filename = null;
+
+        if (isset($this->photo)) {
+            $filename = $this->photo->hashName('listrik');
+            $photo = $this->photo;
+            $photo->storeAs('', $filename);
+        }
+        elseif(isset($this->oldphoto)){
+            $filename = $this->oldphoto;
+        }
+
+        $this->form->photo = $filename;
+        $this->form->store();
+
+        $this->dispatch('reload');
+
+        $this->reset('photo');
+        $this->reset('tanggal');
+        $this->reset('kwhmeter');
+        $this->reset('show');
     }
 
     public function mount(){

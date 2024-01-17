@@ -1,12 +1,12 @@
 <div>
-    <label for="editKwhmeter" class="btn btn-primary">
+    <label for="editKwhmeter" class="btn btn-primary w-full lg:w-fit">
         <x-tabler-edit class="icon-5" />
         <span>Edit laporan penggunaan listrik</span>
     </label>
 
-    <input type="checkbox" id="editKwhmeter" class="modal-toggle" />
+    <input type="checkbox" id="editKwhmeter" class="modal-toggle" wire:model.live="show" />
     <div class="modal" role="dialog">
-        <div class="modal-box max-w-sm">
+        <form class="modal-box max-w-sm" wire:submit="simpan">
             <h3 class="font-bold text-lg">Edit input kwhmeter!</h3>
             <input type="text" wire:model="form.token_id" class="hidden">
             <div class="py-4 space-y-6">
@@ -17,24 +17,18 @@
                     <input type="date" class="input input-bordered" wire:model.live="tanggal">
                 </div>
 
-
                 @if ($kwhmeter)
                     <div class="card border bg-base-200 shadow-lg border-base-300">
-                        {{-- <pre>@json($form->oldphoto, JSON_PRETTY_PRINT)</pre> --}}
                         <figure>
-                            @if ($photo)
-                                <label for="photo">
-                                    <img src="{{ $form->photo }}" alt="">
-                                </label>
-                            @elseif (isset($form->oldphoto) && $form->oldphoto != '')
-                                <label for="photo">
+                            <label for="photo">
+                                @if ($photo)
+                                    <img src="{{ $photo->temporaryUrl() }}" alt="" class="w-full">
+                                @elseif (isset($form->oldphoto) && $form->oldphoto != '')
                                     <img src="{{ $form->oldphoto }}" alt="{{ $form->oldphoto }}" class="w-full">
-                                </label>
-                            @else
-                                <label for="photo">
+                                @else
                                     <img src="{{ Sikons::noimage() }}" alt="nophoto" class="w-full">
-                                </label>
-                            @endif
+                                @endif
+                            </label>
                             <input type="file" id="photo" wire:model.live="photo" class="hidden"
                                 accept="image/*">
                         </figure>
@@ -51,9 +45,10 @@
                     </div>
                 @endif
             </div>
-            <div class="modal-action">
+            <div class="modal-action justify-between">
                 <label for="editKwhmeter" class="btn">Close!</label>
+                <button class="btn btn-primary">simpan</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
