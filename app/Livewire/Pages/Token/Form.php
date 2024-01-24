@@ -46,6 +46,7 @@ class Form extends Component
         else{
             Token::create($valid);
             $this->reset([
+                'show',
                 'nopln',
                 'ukuran',
                 'daya',

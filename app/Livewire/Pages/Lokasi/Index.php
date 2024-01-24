@@ -9,6 +9,10 @@ class Index extends Component
 {
     public $cari = "";
 
+    public function delete(Lokasi $lokasi){
+        $lokasi->delete();
+    }
+
     public function render()
     {
         return view('livewire.pages.lokasi.index', [

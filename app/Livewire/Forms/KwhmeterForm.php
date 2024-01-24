@@ -18,7 +18,6 @@ class KwhmeterForm extends Form
     public $tanggal = "";
     #[Validate('required', message:":attribute harus diisi")]
     public $pemakaian = "";
-    #[Validate('required', message:":attribute harus diisi", onUpdate:false)]
     public $photo = "";
     public $oldphoto = "";
 
@@ -27,6 +26,7 @@ class KwhmeterForm extends Form
         $this->token_id = $kwhmeter->token_id;
         $this->tanggal = $kwhmeter->tanggal;
         $this->pemakaian = $kwhmeter->pemakaian;
+        $this->photo = $kwhmeter->photo;
         $this->oldphoto = $kwhmeter->image ?? "";
     }
 
@@ -35,7 +35,11 @@ class KwhmeterForm extends Form
         Kwhmeter::updateOrCreate([
             'token_id' => $this->token_id,
             'tanggal' => $this->tanggal,
-        ], $this->all());
+        ], [
+            'user_id' => auth()->id(),
+            'pemakaian' => $this->pemakaian,
+            'photo' => $this->photo,
+        ]);
         $this->reset();
     }
 }

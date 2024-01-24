@@ -16,6 +16,15 @@
                     </label>
                     <input type="date" class="input input-bordered" wire:model.live="tanggal">
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 @if ($kwhmeter)
                     <div class="card border bg-base-200 shadow-lg border-base-300">
@@ -47,7 +56,9 @@
             </div>
             <div class="modal-action justify-between">
                 <label for="editKwhmeter" class="btn">Close!</label>
-                <button class="btn btn-primary">simpan</button>
+                @isset($kwhmeter)
+                    <button class="btn btn-primary">simpan</button>
+                @endisset
             </div>
         </form>
     </div>

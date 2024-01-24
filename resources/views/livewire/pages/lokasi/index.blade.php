@@ -3,10 +3,10 @@
 
     <div class="flex flex-col lg:flex-row justify-between items-center gap-2">
         <input type="search" class="input input-bordered" wire:model.live="cari" placeholder="Cari user">
-        <button class="btn w-full lg:w-fit">
+        <label for="lokasiCreate" class="btn w-full lg:w-fit">
             <x-tabler-plus class="icon-5" />
             <span>Tambah lokasi</span>
-        </button>
+        </label>
     </div>
 
     <div class="table-wrapper">
@@ -32,7 +32,7 @@
                                 wire:navigate>
                                 <x-tabler-edit class="icon-4" />
                             </a>
-                            <button class="btn btn-xs btn-error btn-square">
+                            <button class="btn btn-xs btn-error btn-square" wire:click="delete({{ $data->id }})">
                                 <x-tabler-trash class="icon-4" />
                             </button>
                         </div>
@@ -41,4 +41,6 @@
             @endforeach
         </table>
     </div>
+
+    @livewire('pages.lokasi.create')
 </div>

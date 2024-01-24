@@ -26,6 +26,10 @@ class Edit extends Component
     }
 
     public function simpan(){
+        $this->validate([
+            'kwhmeter' => 'required',
+        ]);
+
         $filename = null;
 
         if (isset($this->photo)) {
@@ -33,16 +37,15 @@ class Edit extends Component
             $photo = $this->photo;
             $photo->storeAs('', $filename);
         }
-        elseif(isset($this->oldphoto)){
-            $filename = $this->oldphoto;
+        else{
+            $filename = $this->form->photo;
         }
 
         $this->form->photo = $filename;
         $this->form->store();
-
         $this->dispatch('reload');
 
-        $this->reset(['photo', 'tanggal', 'kwhmeter', 'show']);
+        $this->reset(['kwhmeter', 'photo', 'tanggal', 'kwhmeter', 'show']);
     }
 
     public function mount(){

@@ -11,7 +11,8 @@ class Lokasi extends Model
 
     protected $fillable = [
         'datel_id',
-        'name'
+        'name',
+        'timezone'
     ];
 
     protected $hidden = [
