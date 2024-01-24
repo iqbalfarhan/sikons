@@ -45,10 +45,14 @@ class Form extends Component
         }
         else{
             Token::create($valid);
-
-            $this->reset();
+            $this->reset([
+                'nopln',
+                'ukuran',
+                'daya',
+            ]);
         }
 
+        $this->reset('show');
         $this->dispatch('reload');
     }
 

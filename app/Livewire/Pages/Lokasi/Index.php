@@ -13,8 +13,9 @@ class Index extends Component
     {
         return view('livewire.pages.lokasi.index', [
             'datas' => Lokasi::when($this->cari, function($q){
-                return $q->where('name', 'like', "%".$this->cari."%")
-                ->orWhere('username', 'like', "%".$this->cari."%");
+                return $q->where('name', 'like', "%".$this->cari."%")->orWhereHas('datel', function($datel){
+                    return $datel->where('name', 'like', "%".$this->cari."%")->orWhere('witel', 'like', "%".$this->cari."%");
+                });
             })->get()
         ]);
     }
