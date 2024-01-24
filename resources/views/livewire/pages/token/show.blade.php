@@ -14,7 +14,7 @@
             <table class="table">
                 <thead class="text-center">
                     @foreach ($dayNames as $name)
-                        <th>{{ $name }}</th>
+                        <th style="width: {{ 100 / 7 }}%">{{ $name }}</th>
                     @endforeach
                 </thead>
                 @foreach (array_chunk($daysOfMonth, 7) as $week)

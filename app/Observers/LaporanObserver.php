@@ -3,12 +3,18 @@
 namespace App\Observers;
 
 use App\Models\Laporan;
+use Iqbalfarhan08\Telegramtools\Traits\TelegramTrait;
 
 class LaporanObserver
 {
+    use TelegramTrait;
+
     public function created(Laporan $laporan){
         $score = $this->hitungScore($laporan->waktu, $laporan->created_at);
         $laporan->update(['score' => $score]);
+
+        // $this->setChatId("608751286");
+        $this->sendPhoto($laporan->thumbnail, $laporan->desc);
     }
 
     public function hitungScore($waktuJaga, $createdAt) {
