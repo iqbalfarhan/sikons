@@ -28,9 +28,10 @@
                     <td>{{ $data->tokens->count() }} Token</td>
                     <td class="text-center">
                         <div class="flex gap-1 justify-center">
-                            <button class="btn btn-xs btn-success btn-square">
+                            <a href="{{ route('lokasi.edit', $data) }}" class="btn btn-xs btn-success btn-square"
+                                wire:navigate>
                                 <x-tabler-edit class="icon-4" />
-                            </button>
+                            </a>
                             <button class="btn btn-xs btn-error btn-square">
                                 <x-tabler-trash class="icon-4" />
                             </button>

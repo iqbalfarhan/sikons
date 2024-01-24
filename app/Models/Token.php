@@ -10,6 +10,7 @@ class Token extends Model
     use HasFactory;
 
     protected $fillable = [
+        'lokasi_id',
         'nopln',
         'ukuran',
         'daya',

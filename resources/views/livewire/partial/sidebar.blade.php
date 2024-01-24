@@ -121,7 +121,7 @@
                 @can('lokasi.index')
                     <li>
                         <a href="{{ route('lokasi.index') }}" @class([
-                            'menu-active' => Route::is('lokasi.index'),
+                            'menu-active' => Route::is(['lokasi.index', 'lokasi.edit']),
                         ]) wire:navigate>
                             <x-tabler-building class="icon-5" />
                             <span>Lokasi management</span>

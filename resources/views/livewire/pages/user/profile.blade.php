@@ -22,7 +22,7 @@
 
     <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan akun:</h3>
-        <div class="card bg-base-200">
+        <div class="card bg-base-100 border-base-300 border">
             <div class="card-body">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
@@ -30,12 +30,6 @@
                             <span class="label-text">Nama lengkap</span>
                         </label>
                         <input type="text" class="input input-bordered w-full" wire:model="form.name">
-                    </div>
-                    <div class="form control">
-                        <label for="" class="label">
-                            <span class="label-text">NIK</span>
-                        </label>
-                        <input type="text" class="input input-bordered w-full" wire:model="form.nik">
                     </div>
                     <div class="form control">
                         <label for="" class="label">
@@ -47,7 +41,7 @@
                         <label for="" class="label">
                             <span class="label-text">Password login</span>
                         </label>
-                        <input type="text" class="input input-bordered w-full" wire:model="form.password"
+                        <input type="password" class="input input-bordered w-full" wire:model="form.password"
                             placeholder="Password">
                     </div>
                 </div>
@@ -57,7 +51,7 @@
 
     <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan lokasi:</h3>
-        <div class="card bg-base-200">
+        <div class="card bg-base-100 border-base-300 border">
             <div class="card-body">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
@@ -82,7 +76,7 @@
 
     <div class="w-full max-w-2xl mx-auto space-y-4">
         <h3 class="text-lg">Pengaturan lainnya:</h3>
-        <div class="card bg-base-200">
+        <div class="card bg-base-100 border-base-300 border">
             <div class="card-body">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="form control">
@@ -96,10 +90,16 @@
         </div>
     </div>
 
-    <div class="w-full max-w-2xl mx-auto space-y-4">
-        <button class="btn btn-primary" wire:click="simpan">
-            <x-tabler-check class="icon-5" />
-            <span>Simpan</span>
-        </button>
+    <div class="w-full max-w-2xl mx-auto space-y-4 ">
+        <div class="flex justify-between">
+            <button class="btn btn-primary" wire:click="simpan">
+                <x-tabler-check class="icon-5" />
+                <span>Simpan</span>
+            </button>
+            <button class="btn btn-ghost" wire:click="$dispatch('logout')">
+                <x-tabler-logout class="icon-5" />
+                <span>logout</span>
+            </button>
+        </div>
     </div>
 </div>

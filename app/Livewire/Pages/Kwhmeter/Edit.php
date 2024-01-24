@@ -42,10 +42,7 @@ class Edit extends Component
 
         $this->dispatch('reload');
 
-        $this->reset('photo');
-        $this->reset('tanggal');
-        $this->reset('kwhmeter');
-        $this->reset('show');
+        $this->reset(['photo', 'tanggal', 'kwhmeter', 'show']);
     }
 
     public function mount(){

@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/lembur', App\Livewire\Pages\Dashboard\Lembur::class)->name('lembur');
 
     Route::get('/lokasi', App\Livewire\Pages\Lokasi\Index::class)->name('lokasi.index');
+    Route::get('/lokasi/{lokasi}/edit', App\Livewire\Pages\Lokasi\Edit::class)->name('lokasi.edit');
 
     Route::get('/role', App\Livewire\Pages\Role\Index::class)->name('role.index');
 
