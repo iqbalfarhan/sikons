@@ -11,4 +11,12 @@ return [
             "100" => "100",
         ],
     ],
+    'witels' => [
+        'BALIKPAPAN',
+        'SAMARINDA',
+        'KALBAR',
+        'KALTENG',
+        'KALTARA',
+        'KALSEL',
+    ]
 ];

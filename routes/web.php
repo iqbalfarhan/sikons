@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/laporan', App\Livewire\Pages\Laporan\Index::class)->name('laporan.index');
     Route::get('/laporan/search', App\Livewire\Pages\Laporan\Search::class)->name('laporan.search');
+    Route::get('/laporan/summary', App\Livewire\Pages\Laporan\Summary::class)->name('laporan.summary');
     Route::get('/laporan/download', App\Livewire\Pages\Laporan\Download::class)->name('laporan.download');
     Route::get('/laporan/create', App\Livewire\Pages\Laporan\Create::class)->name('laporan.create');
     Route::get('/laporan/listrik', App\Livewire\Pages\Laporan\Listrik::class)->name('laporan.listrik');

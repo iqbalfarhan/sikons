@@ -11,6 +11,8 @@ class Index extends Component
 {
     use LivewireAlert;
 
+    public $cari;
+
     protected $listeners = ['reload' => '$refresh'];
 
     public function assignRole(Permission $permission, $role)
@@ -38,7 +40,7 @@ class Index extends Component
     {
         return view('livewire.pages.role.index', [
             'roles' => Role::whereNot('name', 'superadmin')->pluck('name'),
-            'permits' => Permission::get(),
+            'permits' => Permission::when($this->cari, fn($s) => $s->where('name', 'like', '%'.$this->cari.'%'))->orderBy('name')->get(),
         ]);
     }
 }

@@ -1,9 +1,9 @@
-<div class="card w-96">
+<div class="card max-w-sm">
     <figure>
         <img src="{{ url('logo.png') }}" class="w-1/2">
     </figure>
     <form class="card-body space-y-4" wire:submit="login">
-        <h2 class="card-title">Login ke {{ config('app.name') }}</h2>
+        {{-- <h2 class="card-title">Login ke {{ config('app.name') }}</h2> --}}
         <div class="space-y-2 py-2">
             <input type="text"
                 class="input input-bordered w-full @error('username')

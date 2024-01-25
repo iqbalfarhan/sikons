@@ -39,4 +39,8 @@ class Lokasi extends Model
     public function tokens(){
         return $this->hasMany(Token::class);
     }
+
+    public function laporans(){
+        return $this->hasMany(Laporan::class);
+    }
 }

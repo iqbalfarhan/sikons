@@ -21,7 +21,7 @@
                         'menu-active' => Route::is(['kwhmeter', 'token.show']),
                     ]) wire:navigate>
                         <x-tabler-bolt class="icon-5" />
-                        <span>KWH Meter</span>
+                        <span>KWH meter</span>
                     </a>
                 </li>
             @endcan
@@ -51,6 +51,16 @@
         <li>
             <h2 class="menu-title">Laporan sikons</h2>
             <ul>
+                @can('laporan.summary')
+                    <li>
+                        <a href="{{ route('laporan.summary') }}" @class([
+                            'menu-active' => Route::is(['laporan.summary', 'laporan.show']),
+                        ]) wire:navigate>
+                            <x-tabler-api class="icon-5" />
+                            <span>Summary laporan</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('laporan.index')
                     <li>
                         <a href="{{ route('laporan.index') }}" @class([

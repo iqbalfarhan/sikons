@@ -29,4 +29,13 @@ class Sikons
 
         return $weeks;
     }
+
+    public static function persentase($nilai, $total) {
+        if ($total != 0) {
+            $persentase = ($nilai / $total) * 100;
+            return round($persentase, 2);
+        } else {
+            return 0;
+        }
+    }
 }

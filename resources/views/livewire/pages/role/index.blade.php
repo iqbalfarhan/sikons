@@ -4,7 +4,7 @@
     ])
 
     <div class="flex justify-between">
-        <input type="text" class="input input-bordered" placeholder="Cari permission">
+        <input type="text" class="input input-bordered" placeholder="Cari permission" wire:model.live="cari">
         <div class="flex gap-1">
             <label for="createRole" class="btn btn-primary">
                 <x-tabler-circle-plus class="icon-5" />

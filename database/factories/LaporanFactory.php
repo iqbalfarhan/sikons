@@ -35,6 +35,7 @@ class LaporanFactory extends Factory
             'ev_lingkungan' => fake()->sentence(),
             'ev_gedung' => fake()->sentence(),
             'catatan' => fake()->sentence(),
+            'score' => fake()->randomElement([1, 2, 3]),
         ];
     }
 }

@@ -26,14 +26,15 @@ class PermissionSeeder extends Seeder
             'lokasi.edit' => ['admin'],
             'lokasi.delete' => ['admin'],
 
+            'laporan.summary' => ['admin', 'petugas', 'pengawas'],
             'laporan.index' => ['admin', 'petugas', 'guest'],
+            'laporan.search' => ['admin', 'petugas', 'guest'],
+            'laporan.mine' => ['admin', 'petugas'],
             'laporan.create' => ['admin', 'petugas'],
+            'laporan.listrik' => ['admin', 'petugas'],
             'laporan.edit' => ['admin', 'petugas'],
             'laporan.delete' => ['admin', 'petugas'],
-            'laporan.mine' => ['admin', 'petugas'],
             'laporan.show' => ['admin', 'petugas'],
-            'laporan.search' => ['admin', 'petugas', 'guest'],
-            'laporan.listrik' => ['admin', 'petugas'],
 
             'profile' => "*",
             'home' => "*",

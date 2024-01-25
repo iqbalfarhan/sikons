@@ -14,7 +14,7 @@ class LaporanObserver
         $laporan->update(['score' => $score]);
 
         // $this->setChatId("608751286");
-        $this->sendPhoto($laporan->thumbnail, $laporan->desc);
+        // $this->sendPhoto($laporan->thumbnail, $laporan->desc);
     }
 
     public function hitungScore($waktuJaga, $createdAt) {

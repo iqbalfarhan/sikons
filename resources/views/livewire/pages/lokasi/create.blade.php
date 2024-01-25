@@ -31,8 +31,11 @@
                     <label for="" class="label">
                         <span class="label-text">Timezone</span>
                     </label>
-                    <input wire:model="form.timezone"
-                        class="input input-bordered @error('form.timezone') input-error @enderror" />
+                    <select class="select select-bordered @error('form.timezone') select-error @enderror"
+                        wire:model.live="form.timezone">
+                        <option value="WIB">WIB</option>
+                        <option value="WITA">WITA</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-action justify-between">
