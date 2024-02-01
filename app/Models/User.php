@@ -53,6 +53,9 @@ class User extends Authenticatable
     public function datel(){
         return $this->belongsTo(Datel::class);
     }
+    public function laporans(){
+        return $this->hasMany(Laporan::class);
+    }
 
     public function getAvatarAttribute(){
         return $this->photo? Storage::url($this->photo) : Sikons::noimage();

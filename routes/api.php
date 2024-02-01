@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Resources\UserResource;
 use App\Models\Laporan;
 use App\Models\Lokasi;
 use App\Models\User;
@@ -17,23 +20,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::get('/laporan/mine', [LaporanController::class, 'mine']);
+
+    Route::resource('laporan', LaporanController::class);
 });
 
-Route::post('/generate', function(Request $request){
-    $request->validate([
-        'tanggal' => 'required'
-    ]);
+Route::post('login',  [AuthController::class,'login']);
 
-    foreach (Lokasi::pluck('id') as $lokasi_id) {
-        foreach (['malam', 'pagi', 'sore'] as $waktu) {
-            Laporan::create([
-                'tanggal' => date('Y-m-d', strtotime($request->tanggal)),
-                'user_id' => Arr::random(User::pluck('id')->toArray()),
-                'lokasi_id' => $lokasi_id,
-                'waktu' => $waktu
-            ]);
-        }
-    }
-});
+
+// Route::get('laporan', [LaporanController::class, 'index']);
+
+// Route::post('/generate', function(Request $request){
+//     $request->validate([
+//         'tanggal' => 'required'
+//     ]);
+
+//     foreach (Lokasi::pluck('id') as $lokasi_id) {
+//         foreach (['malam', 'pagi', 'sore'] as $waktu) {
+//             Laporan::create([
+//                 'tanggal' => date('Y-m-d', strtotime($request->tanggal)),
+//                 'user_id' => Arr::random(User::pluck('id')->toArray()),
+//                 'lokasi_id' => $lokasi_id,
+//                 'waktu' => $waktu
+//             ]);
+//         }
+//     }
+// });
