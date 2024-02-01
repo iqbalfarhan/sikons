@@ -67,7 +67,11 @@ class LaporanForm extends Form
 
     public function store(){
         $this->validate();
-        Laporan::create($this->all());
+        Laporan::updateOrCreate([
+            'tanggal' => $this->tanggal,
+            'user_id' => $this->user_id,
+            'waktu' => $this->waktu,
+        ],$this->all());
         $this->reset();
     }
 

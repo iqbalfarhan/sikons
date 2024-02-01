@@ -46,7 +46,8 @@
                                 wire:click="$dispatch('editPassword', {'user': {{ $data->id }}})">
                                 <x-tabler-key class="icon-4" />
                             </button>
-                            <button class="btn btn-xs btn-error btn-square">
+                            <button class="btn btn-xs btn-error btn-square"
+                                wire:click="deleteUser({{ $data->id }})">
                                 <x-tabler-trash class="icon-4" />
                             </button>
                         </div>

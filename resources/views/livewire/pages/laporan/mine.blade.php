@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper space-y-6">
     @livewire('partial.header', [
         'title' => 'Laporan saya',
     ])
@@ -15,6 +15,12 @@
 
     <div class="divider text-xs opacity-75">{{ $datas->count() }} Laporan ditemukan</div>
 
+    @if ($datas->hasPages())
+        <div class="py-6">
+            {{ $datas->links() }}
+        </div>
+    @endif
+
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($datas as $data)
             @livewire('pages.laporan.item', ['laporan' => $data], key($data->id))
@@ -24,4 +30,10 @@
             </div>
         @endforelse
     </div>
+
+    @if ($datas->hasPages())
+        <div class="py-6">
+            {{ $datas->links() }}
+        </div>
+    @endif
 </div>

@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'datel_id' => fake()->randomElement(Datel::pluck('id')),
             'name' => fake()->name(),
             'username' => fake()->unique()->username(),
+            'telp' => fake()->unique()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
         ];
     }

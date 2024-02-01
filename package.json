@@ -15,6 +15,7 @@
         "vite": "^5.0.10"
     },
     "dependencies": {
+        "dom-to-image": "^2.6.0",
         "init": "^0.1.2"
     }
 }

@@ -5,9 +5,12 @@ namespace App\Livewire\Pages\Laporan;
 use App\Models\Laporan;
 use App\Models\Lokasi;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Mine extends Component
 {
+    use WithPagination;
+
     public $tanggal;
     public $lokasi_id;
 
@@ -19,11 +22,11 @@ class Mine extends Component
                 $q->whereDate('created_at', $this->tanggal);
             })->when($this->lokasi_id, function ($q){
                 $q->where('lokasi_id', $this->lokasi_id);
-            })->latest()->limit(12)->get();
+            })->latest()->paginate(21);
 
         return view('livewire.pages.laporan.mine', [
             'datas' => $datas,
-            'lokasis' => Lokasi::datelname($me->datel->name)->pluck('name', 'id')
+            'lokasis' => Lokasi::datelname($me->datel->name)->latest()->pluck('name', 'id')
         ]);
     }
 }
