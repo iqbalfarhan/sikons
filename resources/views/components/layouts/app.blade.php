@@ -29,10 +29,10 @@
             </div>
         @endauth
         @guest
-            <div class="grid place-content-center w-full min-h-screen bg-gradient-to-r from-blue-700 to-purple-800">
-                <div class="navbar absolute">
+            <div class="grid place-content-center w-full min-h-screen bg-gradient-to-r from-red-700 to-orange-600">
+                <div class="navbar absolute text-white">
                     <div class="flex-1">
-                        <a class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
+
                     </div>
                     <div class="flex-none">
                         <ul class="menu menu-horizontal px-1">

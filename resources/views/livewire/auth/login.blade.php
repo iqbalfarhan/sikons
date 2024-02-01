@@ -1,8 +1,9 @@
-<div class="card max-w-sm">
-    <figure>
-        <img src="{{ url(session('theme', 'light') == 'light' ? 'logo_light.png' : 'logo_dark.png') }}" class="h-8">
-    </figure>
+<div class="card max-w-sm bg-base-100 p-4">
     <form class="card-body space-y-4" wire:submit="login">
+        <figure>
+            <img src="{{ url(session('theme', 'light') == 'light' ? 'logo_light.png' : 'logo_dark.png') }}"
+                class="h-8">
+        </figure>
         {{-- <h2 class="card-title">Login ke {{ config('app.name') }}</h2> --}}
         <div class="space-y-2 py-2">
             <input type="text"
