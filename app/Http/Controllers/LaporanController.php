@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\LaporanResource;
 use App\Models\Laporan;
+use App\Models\Lokasi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class LaporanController extends Controller
 {
@@ -45,7 +49,13 @@ class LaporanController extends Controller
      */
     public function show(Laporan $laporan)
     {
-        return LaporanResource::make($laporan);
+        $token = PersonalAccessToken::findToken(request()->bearerToken());
+        if ($token) {
+            return LaporanResource::make($laporan);
+        }
+        else{
+            return response(401);
+        }
     }
 
     /**
@@ -69,5 +79,22 @@ class LaporanController extends Controller
     public function destroy(Laporan $laporan)
     {
         return $laporan->delete();
+    }
+
+    public function generate(Request $request){
+        $request->validate([
+            'tanggal' => 'required'
+        ]);
+
+        foreach (Lokasi::pluck('id') as $lokasi_id) {
+            foreach (['malam', 'pagi', 'sore'] as $waktu) {
+                Laporan::create([
+                    'tanggal' => date('Y-m-d', strtotime($request->tanggal)),
+                    'user_id' => Arr::random(User::pluck('id')->toArray()),
+                    'lokasi_id' => $lokasi_id,
+                    'waktu' => $waktu
+                ]);
+            }
+        }
     }
 }

@@ -29,8 +29,8 @@
             </div>
         @endauth
         @guest
-            <div class="grid place-content-center w-full min-h-screen bg-gradient-to-r from-red-700 to-orange-600">
-                <div class="navbar absolute text-white">
+            <div class="grid place-content-center w-full min-h-screen">
+                <div class="navbar absolute">
                     <div class="flex-1">
 
                     </div>
@@ -41,7 +41,9 @@
                         </ul>
                     </div>
                 </div>
-                {{ $slot }}
+                <div class="card max-w-sm bg-base-100 p-4">
+                    {{ $slot }}
+                </div>
             </div>
         @endguest
 
