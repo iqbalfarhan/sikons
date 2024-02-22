@@ -6,6 +6,7 @@ use App\Http\Resources\LaporanResource;
 use App\Models\Laporan;
 use App\Models\Lokasi;
 use App\Models\User;
+use Barryvdh\Snappy\Facades\SnappyImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Laravel\Sanctum\PersonalAccessToken;
@@ -96,5 +97,25 @@ class LaporanController extends Controller
                 ]);
             }
         }
+    }
+
+    public function summarysnap($periode, $uniq){
+        list($tahun, $bulan) = explode('-', $periode);
+        $datas = Lokasi::with('laporans')->whereHas('datel', function($datel) {
+            $datel->whereIn('witel', config('sikons.witels'));
+        })->get()->groupBy('datel.witel');
+        $filename = "summary-laporan-sikons-{$uniq}.jpg";
+
+        $snap = SnappyImage::loadView('exports.laporan-summary-image', [
+            'no' => 1,
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+            'periode' => $periode,
+            'datas' => $datas,
+        ])->setOptions([
+            'width' => 550
+        ]);
+
+        return $snap->inline($filename);
     }
 }

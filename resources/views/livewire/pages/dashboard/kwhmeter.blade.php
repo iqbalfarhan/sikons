@@ -53,10 +53,11 @@
                         <td>{{ $data->selisih ?? '' }}</td>
                         <td>
                             <div class="flex justify-center gap-2">
-                                <button class="btn btn-xs btn-accent btn-square"
+                                <a href="{{ route('kwhmeter.show', $data->id) }}"
+                                    class="btn btn-xs btn-accent btn-square"
                                     wire:click="$dispatch('showKwhmeter', {token:{{ $data->id }}})">
                                     <x-tabler-folder class="icon-4" />
-                                </button>
+                                </a>
                                 <a href="{{ route('token.show', $data->id) }}"
                                     class="btn btn-xs btn-square btn-primary">
                                     <x-tabler-calendar class="icon-4" />
@@ -68,6 +69,4 @@
             </tbody>
         </table>
     </div>
-
-    @livewire('pages.kwhmeter.show')
 </div>

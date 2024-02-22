@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 @foreach ($permits as $permit)
-                    <tr>
+                    <tr key="{{ $permit->id }}">
                         <td>{{ $permit->name }}</td>
                         @foreach ($roles as $role)
                             <td>
@@ -42,11 +42,12 @@
                         @endforeach
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <button class="btn btn-xs btn-success btn-square">
+                                <button class="btn btn-xs btn-success btn-square"
+                                    wire:click="$dispatch('editPermission', {permission:{{ $permit->id }}})">
                                     <x-tabler-edit class="icon-4" />
                                 </button>
                                 <button class="btn btn-xs btn-error btn-square"
-                                    wire:click="delete({{ $permit->id }})">
+                                    wire:click="deletePermission({{ $permit->id }})">
                                     <x-tabler-trash class="icon-4" />
                                 </button>
                             </div>
@@ -58,4 +59,5 @@
     </div>
 
     @livewire('pages.role.create')
+    @livewire('pages.role.edit-permission')
 </div>

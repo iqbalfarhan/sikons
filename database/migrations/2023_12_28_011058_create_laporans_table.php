@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lokasi_id')->constrained()->cascadeOnDelete;
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete;
+            $table->foreignId('lokasi_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('waktu', ['pagi', 'sore', 'malam'])->default('pagi');
             $table->enum('lingkungan', ['aman', 'tidak aman'])->default('aman');
             $table->enum('bbm', ['aman', 'tidak aman'])->default('aman');

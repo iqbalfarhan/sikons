@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/home');
-
 });
 
 Route::middleware('guest')->group(function(){
@@ -24,10 +24,13 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
+
     Route::get('/home', App\Livewire\Pages\Dashboard\Home::class)->name('home');
     Route::get('/kwhmeter', App\Livewire\Pages\Dashboard\Kwhmeter::class)->name('kwhmeter');
     Route::get('/simaru', App\Livewire\Pages\Dashboard\Simaru::class)->name('simaru');
     Route::get('/lembur', App\Livewire\Pages\Dashboard\Lembur::class)->name('lembur');
+
+    Route::get('/kwhmeter/{token}', App\Livewire\Pages\Kwhmeter\Show::class)->name('kwhmeter.show');
 
     Route::get('/lokasi', App\Livewire\Pages\Lokasi\Index::class)->name('lokasi.index');
     Route::get('/lokasi/{lokasi}/edit', App\Livewire\Pages\Lokasi\Edit::class)->name('lokasi.edit');
@@ -41,6 +44,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/laporan', App\Livewire\Pages\Laporan\Index::class)->name('laporan.index');
     Route::get('/laporan/search', App\Livewire\Pages\Laporan\Search::class)->name('laporan.search');
     Route::get('/laporan/summary', App\Livewire\Pages\Laporan\Summary::class)->name('laporan.summary');
+    Route::get('/laporan/summary/{periode}/{uniq}', [LaporanController::class, 'summarysnap'])->name('laporan.summarysnap');
     Route::get('/laporan/download', App\Livewire\Pages\Laporan\Download::class)->name('laporan.download');
     Route::get('/laporan/create', App\Livewire\Pages\Laporan\Create::class)->name('laporan.create');
     Route::get('/laporan/listrik', App\Livewire\Pages\Laporan\Listrik::class)->name('laporan.listrik');

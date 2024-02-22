@@ -22,7 +22,7 @@
                     @livewire('partial.preview')
                     @livewire('partial.bottombar')
                 </div>
-                <div class="drawer-side">
+                <div class="drawer-side scrollbar-hide">
                     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                     @livewire('partial.sidebar')
                 </div>
@@ -50,6 +50,7 @@
         {{-- @livewireScripts --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <x-livewire-alert::scripts />
+        @livewireChartsScripts
 
     </body>
 

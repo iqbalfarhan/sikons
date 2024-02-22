@@ -33,6 +33,7 @@ class Index extends Component
 
     public function deletePermission(Permission $permission)
     {
+        $permission->delete();
         $this->alert('success', "Permission deleted successfully");
     }
 

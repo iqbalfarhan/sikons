@@ -37,9 +37,9 @@ class Show extends Component
     public function render()
     {
         $datas = Kwhmeter::where('token_id', $this->token->id)
-                            ->whereYear('tanggal', $this->tahun)
-                            ->whereMonth('tanggal', $this->bulan)
-                            ->pluck('id', 'tanggal');
+            ->whereYear('tanggal', $this->tahun)
+            ->whereMonth('tanggal', $this->bulan)
+            ->pluck('id', 'tanggal');
 
         $dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
         $daysOfMonth = range(1, cal_days_in_month(CAL_GREGORIAN, $this->bulan, $this->tahun));

@@ -164,6 +164,7 @@ return [
         Onecentlin\Adminer\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -189,6 +190,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Sikons' => App\Helpers\Sikons::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

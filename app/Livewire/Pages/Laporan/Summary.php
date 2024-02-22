@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Summary extends Component
 {
+    public $no = 1;
     public $periode;
     public $bulan;
     public $tahun;

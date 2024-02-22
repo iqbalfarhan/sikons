@@ -20,8 +20,13 @@ class UserSeeder extends Seeder
         ], [
             'name' => 'Iqbal Farhan Syuhada',
             'password' => Hash::make('adminoke'),
+            'telp' => '08999779527',
             'datel_id' => Datel::first()->id
         ]);
         $user->assignRole('superadmin');
+
+        User::factory(10)->each(function($user){
+            $user->assignRole('petugas');
+        })->create();
     }
 }

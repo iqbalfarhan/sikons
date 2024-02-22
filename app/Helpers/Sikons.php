@@ -38,4 +38,8 @@ class Sikons
             return 0;
         }
     }
+
+    public static function number($nilai = 0) {
+        return number_format($nilai, 0, ',', '.');
+    }
 }

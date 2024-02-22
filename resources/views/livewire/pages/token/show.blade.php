@@ -20,13 +20,17 @@
                 @foreach (array_chunk($daysOfMonth, 7) as $week)
                     <tr>
                         @foreach ($week as $day)
-                            <td>
+                            @php
+                                $day = str_pad($day, 2, '0', STR_PAD_LEFT);
+                                $fulldate = implode('-', [$tanggal, $day]);
+                            @endphp
+                            <td wire:key="{{ uniqid() }}">
                                 @if ($day != 0)
                                     <div class="flex flex-col gap-2">
                                         <div class="btn btn-xs btn-circle btn-outline group">
                                             {{ $day }}
                                         </div>
-                                        @livewire('pages.token.item', [$datas[implode('-', [$tanggal, $day])] ?? 0], key(uniqid()))
+                                        @livewire('pages.token.item', [$datas[$fulldate]], key(uniqid()))
                                     </div>
                                 @endif
                             </td>
